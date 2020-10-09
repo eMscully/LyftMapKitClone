@@ -1,0 +1,30 @@
+
+
+[
+    {"title":"T.J. Maxx & HomeGoods",
+        "address":"14265 Orchard Pkwy, Westminster, CO 80023",
+        "lat":39.955080,
+        "lng":-104.995480
+    },
+    {"title":"Barbed Wire Books",
+        "address":"504 Main St, Longmont, CO 80501",
+        "lat":40.167720,
+        "lng":-105.102290
+    },
+    {"title":"BlackJack Pizza",
+        "address":"515 Briggs St, Erie, CO 80516",
+        "lat":40.049250,
+        "lng":-1056.047050
+    },
+    {"title":"Igadi Dispensary",
+        "address":"1325 S. Public Road, Lafayette, CO 80026",
+        "lat":39.999215,
+        "lng":-105.090444
+    }
+    
+    
+    
+    
+    
+    
+]
