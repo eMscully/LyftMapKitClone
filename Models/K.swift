@@ -3,7 +3,7 @@ struct K {
 		static let carAnnotation = "car"
 		static let driver = "driver"
 		static let hyundai = "Hyundai Sonata"
-		static let starRating = "rating-5.0"
+		static let rating = "rating-5.0"
 		static let compact = "ride-compact"
 		static let shared = "ride-shared"
 		static let large = "ride-large"
@@ -21,4 +21,5 @@ struct K {
 		static let compactCapacity = "4"
 		static let largeCapacity = "6" 
 	}
+
 }
