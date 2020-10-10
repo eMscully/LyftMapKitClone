@@ -1,14 +1,11 @@
-//
-//  DropOffLocationViewController.swift
-//  LyftMapKitClone
-//
-//  Created by Erin Scully on 10/9/20.
-//
 
 import UIKit
 
 class DropOffLocationViewController: UIViewController {
 
+    @IBOutlet weak var dropOffTextField: UITextField!
+  
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -16,6 +13,8 @@ class DropOffLocationViewController: UIViewController {
     }
     
 
+    @IBAction func dropOffTextFieldPressed(_ sender: UITextField) {
+    }
     /*
     // MARK: - Navigation
 
