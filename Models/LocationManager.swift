@@ -19,6 +19,8 @@ class LocationManager {
         }
         
     }
-    
-    
+//MARK: - Method created so other classes can access the decoded JSON locations array  (required due to locations data being a private LocationManager class variable)
+    func getLocations()->[Location]{
+        return locations
+    }
 }
