@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F042D3225315060001693E1 /* LyftRideQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F042D3125315060001693E1 /* LyftRideQuote.swift */; };
+		5F042D37253152EF001693E1 /* LyftRideQuoteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F042D36253152EF001693E1 /* LyftRideQuoteManager.swift */; };
+		5F042D3C253157BB001693E1 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F042D3B253157BB001693E1 /* K.swift */; };
 		5FBD4551253077270039A86C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBD4550253077270039A86C /* AppDelegate.swift */; };
 		5FBD4553253077270039A86C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBD4552253077270039A86C /* SceneDelegate.swift */; };
 		5FBD4555253077270039A86C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBD4554253077270039A86C /* HomeViewController.swift */; };
@@ -45,6 +48,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5F042D3125315060001693E1 /* LyftRideQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyftRideQuote.swift; sourceTree = "<group>"; };
+		5F042D36253152EF001693E1 /* LyftRideQuoteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyftRideQuoteManager.swift; sourceTree = "<group>"; };
+		5F042D3B253157BB001693E1 /* K.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		5FBD454D253077270039A86C /* LyftMapKitClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LyftMapKitClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FBD4550253077270039A86C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5FBD4552253077270039A86C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -186,9 +192,12 @@
 		5FBD45B125307E670039A86C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5F042D3B253157BB001693E1 /* K.swift */,
 				5FBD45BC25307FE50039A86C /* Location.swift */,
 				5FBD45C125307FF80039A86C /* LocationManager.swift */,
 				5FBD45C62530803D0039A86C /* locations-json.json */,
+				5F042D3125315060001693E1 /* LyftRideQuote.swift */,
+				5F042D36253152EF001693E1 /* LyftRideQuoteManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -352,9 +361,12 @@
 				5FBD4555253077270039A86C /* HomeViewController.swift in Sources */,
 				5FBD4551253077270039A86C /* AppDelegate.swift in Sources */,
 				5FBD458A25307BD50039A86C /* DropOffLocationViewController.swift in Sources */,
+				5F042D37253152EF001693E1 /* LyftRideQuoteManager.swift in Sources */,
 				5FBD45C225307FF80039A86C /* LocationManager.swift in Sources */,
 				5FBD458F25307CE10039A86C /* RouteViewController.swift in Sources */,
 				5FBD45D025308B070039A86C /* LocationCell.swift in Sources */,
+				5F042D3225315060001693E1 /* LyftRideQuote.swift in Sources */,
+				5F042D3C253157BB001693E1 /* K.swift in Sources */,
 				5FBD4553253077270039A86C /* SceneDelegate.swift in Sources */,
 				5FBD45BD25307FE50039A86C /* Location.swift in Sources */,
 			);
