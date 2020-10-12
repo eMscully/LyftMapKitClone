@@ -90,6 +90,7 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="bEV-x9-olq" id="Ovs-cu-7da"/>
+                        <outlet property="searchButton" destination="Asv-om-zlP" id="sqA-fD-wAJ"/>
                         <outlet property="tableView" destination="Mqp-id-lDa" id="STH-H3-ZUG"/>
                     </connections>
                 </viewController>

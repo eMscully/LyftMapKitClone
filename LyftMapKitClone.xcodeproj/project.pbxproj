@@ -10,6 +10,7 @@
 		5F042D3225315060001693E1 /* LyftRideQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F042D3125315060001693E1 /* LyftRideQuote.swift */; };
 		5F042D37253152EF001693E1 /* LyftRideQuoteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F042D36253152EF001693E1 /* LyftRideQuoteManager.swift */; };
 		5F042D3C253157BB001693E1 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F042D3B253157BB001693E1 /* K.swift */; };
+		5F98550B2531812C005FA6CB /* CarAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F98550A2531812C005FA6CB /* CarAnnotation.swift */; };
 		5FBD4551253077270039A86C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBD4550253077270039A86C /* AppDelegate.swift */; };
 		5FBD4553253077270039A86C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBD4552253077270039A86C /* SceneDelegate.swift */; };
 		5FBD4555253077270039A86C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBD4554253077270039A86C /* HomeViewController.swift */; };
@@ -51,6 +52,7 @@
 		5F042D3125315060001693E1 /* LyftRideQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyftRideQuote.swift; sourceTree = "<group>"; };
 		5F042D36253152EF001693E1 /* LyftRideQuoteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyftRideQuoteManager.swift; sourceTree = "<group>"; };
 		5F042D3B253157BB001693E1 /* K.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
+		5F98550A2531812C005FA6CB /* CarAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarAnnotation.swift; sourceTree = "<group>"; };
 		5FBD454D253077270039A86C /* LyftMapKitClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LyftMapKitClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FBD4550253077270039A86C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5FBD4552253077270039A86C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,12 +104,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F6399D3253182D1003CF0AB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5FBD4554253077270039A86C /* HomeViewController.swift */,
+				5FBD458925307BD50039A86C /* DropOffLocationViewController.swift */,
+				5FBD459625307CF10039A86C /* DriverViewController.swift */,
+				5FBD458E25307CE10039A86C /* RouteViewController.swift */,
+			);
+			name = Controllers;
+			path = HomeScene;
+			sourceTree = "<group>";
+		};
 		5FBD4544253077270039A86C = {
 			isa = PBXGroup;
 			children = (
 				5FBD45B225307E710039A86C /* Supporting Files */,
 				5FBD45CE25308AEA0039A86C /* Views */,
 				5FBD45B125307E670039A86C /* Models */,
+				5F6399D3253182D1003CF0AB /* Controllers */,
 				5FBD454F253077270039A86C /* LyftMapKitClone */,
 				5FBD4566253077280039A86C /* LyftMapKitCloneTests */,
 				5FBD4571253077280039A86C /* LyftMapKitCloneUITests */,
@@ -128,10 +143,6 @@
 		5FBD454F253077270039A86C /* LyftMapKitClone */ = {
 			isa = PBXGroup;
 			children = (
-				5FBD45AA25307DF10039A86C /* DriverScene */,
-				5FBD45AB25307E060039A86C /* RouteScene */,
-				5FBD45AC25307E120039A86C /* DropOffScene */,
-				5FBD45AD25307E240039A86C /* HomeScene */,
 				5FBD4559253077280039A86C /* Assets.xcassets */,
 				5FBD455B253077280039A86C /* LaunchScreen.storyboard */,
 				5FBD455E253077280039A86C /* Info.plist */,
@@ -157,38 +168,6 @@
 			path = LyftMapKitCloneUITests;
 			sourceTree = "<group>";
 		};
-		5FBD45AA25307DF10039A86C /* DriverScene */ = {
-			isa = PBXGroup;
-			children = (
-				5FBD459625307CF10039A86C /* DriverViewController.swift */,
-			);
-			path = DriverScene;
-			sourceTree = "<group>";
-		};
-		5FBD45AB25307E060039A86C /* RouteScene */ = {
-			isa = PBXGroup;
-			children = (
-				5FBD458E25307CE10039A86C /* RouteViewController.swift */,
-			);
-			path = RouteScene;
-			sourceTree = "<group>";
-		};
-		5FBD45AC25307E120039A86C /* DropOffScene */ = {
-			isa = PBXGroup;
-			children = (
-				5FBD458925307BD50039A86C /* DropOffLocationViewController.swift */,
-			);
-			path = DropOffScene;
-			sourceTree = "<group>";
-		};
-		5FBD45AD25307E240039A86C /* HomeScene */ = {
-			isa = PBXGroup;
-			children = (
-				5FBD4554253077270039A86C /* HomeViewController.swift */,
-			);
-			path = HomeScene;
-			sourceTree = "<group>";
-		};
 		5FBD45B125307E670039A86C /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +177,7 @@
 				5FBD45C62530803D0039A86C /* locations-json.json */,
 				5F042D3125315060001693E1 /* LyftRideQuote.swift */,
 				5F042D36253152EF001693E1 /* LyftRideQuoteManager.swift */,
+				5F98550A2531812C005FA6CB /* CarAnnotation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -369,6 +349,7 @@
 				5F042D3C253157BB001693E1 /* K.swift in Sources */,
 				5FBD4553253077270039A86C /* SceneDelegate.swift in Sources */,
 				5FBD45BD25307FE50039A86C /* Location.swift in Sources */,
+				5F98550B2531812C005FA6CB /* CarAnnotation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

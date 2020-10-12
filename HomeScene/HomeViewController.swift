@@ -1,9 +1,4 @@
-//
-//  ViewController.swift
-//  LyftMapKitClone
-//
-//  Created by Erin Scully on 10/9/20.
-//
+
 import MapKit
 import UIKit
 import CoreLocation
@@ -14,24 +9,39 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     
-    var locationManager: CLLocationManager?
+    @IBOutlet weak var searchButton: UIButton!
     
-    var recentLocations = [Location]()
+    var locationManager: CLLocationManager!
     
+    var locations = [Location]()
+    
+    var currentUserLocation: Location!
+    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
 //MARK: - Declare Delegates
+        
+        let recentLocations = LocationManager.shared.getLocations()
+        
+        locations = [recentLocations[0], recentLocations[1]]
+        
         tableView.dataSource = self
         tableView.delegate = self
         mapView.delegate = self
         
         locationManager = CLLocationManager()
-        
         locationManager?.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
         
+//MARK: - Search button UI alterations
+        searchButton.layer.cornerRadius = 10.0
+        searchButton.layer.shadowColor = UIColor.white.cgColor
+        searchButton.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
+        
+        searchButton.layer.shadowRadius = 1.0
+     
     }
-
-
 }
 extension HomeViewController: CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
@@ -41,11 +51,10 @@ extension HomeViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.first {
-            let latitude = location.coordinate.latitude
-            let longitude = location.coordinate.longitude
-            print("User coordinates = Lat: \(latitude), Lng: \(longitude)")
-        }
+        
+        let firstLocation = locations.first!
+        currentUserLocation = Location(title: "Current Location", address: "", latitude: 37.787359, longitude: -122.408227)
+        locationManager.stopUpdatingLocation()
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error retrieving user's location: \(error.localizedDescription)")
@@ -56,15 +65,14 @@ extension HomeViewController: CLLocationManagerDelegate {
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      return 1
-        
-        // return recentLocations.count
+        return locations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell") as! LocationCell
-        
+        let location = locations[indexPath.row]
+        cell.updateCell(with: location)
         return cell
     }
     

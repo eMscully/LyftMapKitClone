@@ -7,9 +7,9 @@ class LocationManager {
     private var locations = [Location]()
     
     private init() {
-        if let locationsJSON = Bundle.main.url(forResource: "locations-JSON", withExtension: "json"){
+         let locationsJSON = Bundle.main.url(forResource: "locations-json", withExtension: "json")
             do {
-                let data = try Data(contentsOf: locationsJSON)
+                let data = try Data(contentsOf: locationsJSON!)
                 let decoder = JSONDecoder()
                 locations = try decoder.decode([Location].self, from: data)
             }
@@ -18,9 +18,10 @@ class LocationManager {
             }
         }
         
-    }
+    
 //MARK: - Method created so other classes can access the decoded JSON locations array  (required due to locations data being a private LocationManager class variable)
     func getLocations()->[Location]{
         return locations
     }
+
 }
