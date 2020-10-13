@@ -2,6 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationTemporaryUsageDescriptionDictionary</key>
+	<dict>
+		<key>wantAccurateLocation</key>
+		<string>&quot;Temporary authorization of full accuracy data&quot;</string>
+	</dict>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>&quot;Location authorization requested for accurate data&quot;</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>&quot;Location tracking requestd&quot;</string>
 	<key>CFBundleDevelopmentRegion</key>
