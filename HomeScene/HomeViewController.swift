@@ -98,7 +98,6 @@ extension HomeViewController: CLLocationManagerDelegate {
                 
         }
         
-    
 
     }
     
@@ -112,7 +111,7 @@ extension HomeViewController: CLLocationManagerDelegate {
     
     }
     
-//MARK: - Graceful fail CLLocationManager delegate method
+//MARK: - "Graceful fail" CLLocationManager delegate method
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error retrieving user's location: \(error.localizedDescription)")
         if let error = error as? CLError, error.code == .denied {
@@ -141,7 +140,47 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 }
 //MARK: - Map View Delegate Methods
 extension HomeViewController: MKMapViewDelegate {
-    
+   
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        //Zoom in on region
+        let distance = 200.0
+        
+        let region = MKCoordinateRegion(center: userLocation.coordinate, latitudinalMeters: distance, longitudinalMeters: distance)
+        
+        mapView.setRegion(region, animated: true)
+        
+        
+        let latitude = userLocation.coordinate.latitude
+        let longitude = userLocation.coordinate.longitude
+        
+        let annotationViewOffset = 0.00075
+        let c1 = CLLocationCoordinate2D(latitude: latitude - annotationViewOffset, longitude: longitude - annotationViewOffset)
+        let c2 = CLLocationCoordinate2D(latitude: latitude, longitude: longitude + annotationViewOffset)
+        let c3 = CLLocationCoordinate2D(latitude: latitude, longitude: longitude - annotationViewOffset)
+        
+        mapView.addAnnotations([CarAnnotation(coordinate: c1), CarAnnotation(coordinate: c2), CarAnnotation(coordinate: c3)])
+        
+        
+        
+    }
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil  }
+       
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "CarAnnotation")
+        
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "CarAnnotation")
+            
+        } else {
+            annotationView?.annotation = annotation
+        }
+        
+        annotationView?.image = UIImage(named: K.Thumbnails.carAnnotation)
+        annotationView?.transform = CGAffineTransform(rotationAngle: CGFloat(arc4random_uniform(360) * 180) / CGFloat.pi)
+        return annotationView
+    }
+
     
     
 }
