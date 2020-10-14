@@ -34,8 +34,8 @@ class HomeViewController: UIViewController {
         mapView.delegate = self
         
         // Seeding data : temporary placemarker
-        let recentLocations = LocationManager.shared.getLocations()
-        locations = [recentLocations[0], recentLocations[1]]
+        locations = LocationManager.shared.getLocations()
+//        locations = [recentLocations[0], recentLocations[1]]
         
         
 //MARK: - Search button CALayer alterations
@@ -52,6 +52,12 @@ class HomeViewController: UIViewController {
             .layer
             .shadowRadius = 1.0
     }
+    
+    @IBAction func searchPressed(_ sender: UIButton) {
+        let destinationViewController = DropOffLocationViewController()
+        present(destinationViewController, animated: true)
+    
+}
 }
 //MARK: - Core Location Manager Delegate Methods:
 
