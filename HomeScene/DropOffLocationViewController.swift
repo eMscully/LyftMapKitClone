@@ -6,6 +6,7 @@ class DropOffLocationViewController: UIViewController {
 
     @IBOutlet weak var dropOffTextField: UITextField!
   
+    @IBOutlet weak var cancelButtonPressed: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     
     private var searchCompleter: MKLocalSearchCompleter?
@@ -14,7 +15,10 @@ class DropOffLocationViewController: UIViewController {
     var pickUpLocation: Location?
     var dropOffLocation: Location?
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        navigationController?.isNavigationBarHidden = false
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,6 +32,7 @@ class DropOffLocationViewController: UIViewController {
        
         locations = LocationManager.shared.getLocations()
      
+       
     }
     
 
@@ -39,23 +44,29 @@ class DropOffLocationViewController: UIViewController {
 
 extension DropOffLocationViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return locations.count
-        
+//ternary operator expression for table view to show query search results in the table view (if any), OR to show the user's recent locations in the table view instead
+        return searchResults.isEmpty ? locations.count : searchResults.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell") as! LocationCell
-        let location = locations[indexPath.row]
-        cell.updateCell(with: location)
+       
+        if searchResults.isEmpty {
+            let location = locations[indexPath.row]
+            cell.updateCell(with: location)
+        } else {
+            let searchResult = searchResults[indexPath.row]
+            cell.updateCell(with: searchResult)
+            
+        }
         return cell
     }
-    
     
 }
 
 extension DropOffLocationViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let latestString = (dropOffTextField.text as! NSString).replacingCharacters(in: range, with: string)
+        let latestString = (dropOffTextField.text! as NSString).replacingCharacters(in: range, with: string)
         
         if latestString.count > 3 {
             searchCompleter?.queryFragment = latestString

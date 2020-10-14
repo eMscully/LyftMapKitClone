@@ -16,7 +16,11 @@ class HomeViewController: UIViewController {
     var locations = [Location]()
     
     var currentUserLocation: Location?
-    
+  
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        navigationController?.isNavigationBarHidden = true 
+    }
   
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bEV-x9-olq">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="504"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="506.5"/>
                             </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mqp-id-lDa">
                                 <rect key="frame" x="0.0" y="643" width="414" height="253"/>
@@ -71,9 +71,9 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey, where are you headed?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rzU-db-dVg">
-                                <rect key="frame" x="20" y="524" width="312" height="29"/>
+                                <rect key="frame" x="20" y="526.5" width="312" height="26.5"/>
                                 <color key="backgroundColor" name="BackgroundColor"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <color key="textColor" name="Turquoise"/>
                                 <nil key="highlightedColor"/>
                             </label>
