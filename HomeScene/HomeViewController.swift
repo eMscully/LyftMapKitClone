@@ -33,9 +33,9 @@ class HomeViewController: UIViewController {
         tableView.delegate = self
         mapView.delegate = self
         
-        // Seeding data : temporary placemarker
+      
         locations = LocationManager.shared.getLocations()
-//        locations = [recentLocations[0], recentLocations[1]]
+
         
         
 //MARK: - Search button CALayer alterations
@@ -55,7 +55,8 @@ class HomeViewController: UIViewController {
     
     @IBAction func searchPressed(_ sender: UIButton) {
         let destinationViewController = DropOffLocationViewController()
-        present(destinationViewController, animated: true)
+        performSegue(withIdentifier: "goToDropOffScene", sender: self)
+        
     
 }
 }

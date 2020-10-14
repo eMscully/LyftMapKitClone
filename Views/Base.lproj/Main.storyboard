@@ -87,7 +87,7 @@
                                 </state>
                                 <connections>
                                     <action selector="searchPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EJG-bA-8u1"/>
-                                    <segue destination="ddA-7w-ynb" kind="show" identifier="goToDropOffScene" id="fXX-nW-oE9"/>
+                                    <segue destination="ddA-7w-ynb" kind="presentation" identifier="goToDropOffScene" modalPresentationStyle="overCurrentContext" id="fXX-nW-oE9"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="NIk-vu-Rmz">
@@ -129,7 +129,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-523.1884057971015" y="-520.3125"/>
+            <point key="canvasLocation" x="536" y="-538"/>
         </scene>
         <!--DropOffLocation-->
         <scene sceneID="uDt-Ug-VlQ">
