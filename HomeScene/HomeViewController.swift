@@ -56,9 +56,18 @@ class HomeViewController: UIViewController {
             .layer
             .shadowRadius = 1.0
     }
+    //MARK: - Passing user's current location information to the drop off view controller screen
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationViewController = segue.destination as? DropOffLocationViewController {
+            if segue.identifier == "goToDropOffScene" {
+                destinationViewController.pickUpLocation = currentUserLocation
+                
+            }
+        }
+    }
     
     @IBAction func searchPressed(_ sender: UIButton) {
-        let destinationViewController = DropOffLocationViewController()
+        
         performSegue(withIdentifier: "goToDropOffScene", sender: self)
         
     
