@@ -3,17 +3,7 @@ import UIKit
 import MapKit
 
 class DropOffLocationViewController: UIViewController {
-    init?(pickUpLocation: Location, coder: NSCoder) {
-      //1
-        self.pickUpLocation = pickUpLocation
-      //2
-      super.init(coder: coder)
 
-    }
-
-    required init?(coder: NSCoder) {
-      fatalError("init(coder:) is not implemented")
-    }
     @IBOutlet weak var dropOffTextField: UITextField!
     @IBOutlet weak var pickUpTextField: UITextField!
     
@@ -44,15 +34,6 @@ class DropOffLocationViewController: UIViewController {
         locations = LocationManager.shared.getLocations()
      
        
-    }
-    
-
-
-    
-
-    @IBAction func dropOffTextFieldPressed(_ sender: UITextField) {
-      
-
     }
 
     

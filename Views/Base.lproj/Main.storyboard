@@ -85,9 +85,6 @@
                                 <state key="normal" title="Search destination...">
                                     <color key="titleColor" name="BackgroundColor"/>
                                 </state>
-                                <connections>
-                                    <segue destination="nKU-wk-qBt" kind="showDetail" identifier="goToDropOffStoryboard" id="dKo-QG-OdU"/>
-                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="NIk-vu-Rmz">
                                 <rect key="frame" x="39" y="573" width="35" height="35"/>
@@ -152,8 +149,8 @@
         <!--DropOffLocation-->
         <scene sceneID="qNm-JN-Hav">
             <objects>
-                <viewControllerPlaceholder storyboardName="DropOffLocation" id="nKU-wk-qBt" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wxZ-25-GdM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="DropOffLocation" id="nKU-wk-qBt" sceneMemberID="viewController"/>
             </objects>
             <point key="canvasLocation" x="-1217" y="-1202"/>
         </scene>
