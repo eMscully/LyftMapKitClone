@@ -85,6 +85,9 @@
                                 <state key="normal" title="Search destination...">
                                     <color key="titleColor" name="BackgroundColor"/>
                                 </state>
+                                <connections>
+                                    <segue destination="CFD-A7-2OU" kind="showDetail" identifier="goToLocations" id="8uV-t1-v1C"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="NIk-vu-Rmz">
                                 <rect key="frame" x="39" y="573" width="35" height="35"/>
@@ -133,15 +136,15 @@
             <objects>
                 <viewController id="CFD-A7-2OU" customClass="DropOffLocationViewController" customModule="LyftMapKitClone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="24K-1A-sFd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eRN-OX-Jpf">
-                                <rect key="frame" x="0.0" y="293" width="414" height="603"/>
+                                <rect key="frame" x="0.0" y="205" width="414" height="637"/>
                                 <color key="backgroundColor" name="BackgroundColor"/>
                                 <color key="separatorColor" name="CitrusGreen"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LocationCell" rowHeight="50" id="hL1-ML-Wft">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LocationCell" rowHeight="50" id="hL1-ML-Wft" customClass="LocationCell" customModule="LyftMapKitClone" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hL1-ML-Wft" id="xEm-hw-2zm">
@@ -185,11 +188,15 @@
                                                 <constraint firstItem="eyH-vH-thq" firstAttribute="top" secondItem="T4S-IN-bJW" secondAttribute="bottom" constant="4.5" id="z5A-72-DDD"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="addressLabel" destination="eyH-vH-thq" id="7yK-aE-4jR"/>
+                                            <outlet property="titleLabel" destination="T4S-IN-bJW" id="xSC-jw-zq5"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="figure.walk" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="UWZ-n6-DEE">
-                                <rect key="frame" x="20" y="127.5" width="36" height="36"/>
+                                <rect key="frame" x="20" y="39.5" width="36" height="36"/>
                                 <color key="tintColor" name="Turquoise"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34.5" id="ryY-Lc-7p6"/>
@@ -197,59 +204,53 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lUL-C8-JgT">
-                                <rect key="frame" x="51" y="105" width="46.5" height="16"/>
+                                <rect key="frame" x="51" y="17" width="46.5" height="16"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                                 <color key="textColor" name="CitrusGreen"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drop-off:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsI-AK-Dlk">
-                                <rect key="frame" x="51" y="201" width="59" height="16"/>
+                                <rect key="frame" x="51" y="113" width="59" height="16"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                 <color key="textColor" name="CitrusGreen"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Current Location" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XVW-6U-Az4">
-                                <rect key="frame" x="60" y="135" width="314" height="34"/>
-                                <color key="backgroundColor" name="LightAccent"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aDj-Ea-v5i">
-                                <rect key="frame" x="60" y="225" width="314" height="34.5"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aDj-Ea-v5i">
+                                <rect key="frame" x="60" y="137" width="314" height="34.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="LightAccent"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="bem-D2-P56">
-                                <rect key="frame" x="20" y="224.5" width="36" height="36"/>
+                                <rect key="frame" x="20" y="136.5" width="36" height="36"/>
                                 <color key="tintColor" name="Turquoise"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34.5" id="cUq-aC-XuD"/>
                                 </constraints>
                             </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Current Location" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CzU-Bl-JPn">
+                                <rect key="frame" x="60" y="41" width="314" height="34.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="LightAccent"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5vT-wy-VD7"/>
                         <color key="backgroundColor" name="BackgroundColor"/>
                         <constraints>
                             <constraint firstItem="UWZ-n6-DEE" firstAttribute="top" secondItem="lUL-C8-JgT" secondAttribute="bottom" constant="8" symbolic="YES" id="1fc-VE-SkJ"/>
-                            <constraint firstItem="XVW-6U-Az4" firstAttribute="leading" secondItem="aDj-Ea-v5i" secondAttribute="leading" id="2T8-cZ-ye9"/>
-                            <constraint firstItem="XVW-6U-Az4" firstAttribute="trailing" secondItem="aDj-Ea-v5i" secondAttribute="trailing" id="6gS-jI-Iwa"/>
                             <constraint firstItem="tsI-AK-Dlk" firstAttribute="top" secondItem="UWZ-n6-DEE" secondAttribute="bottom" constant="37.5" id="6w4-1M-Tg0"/>
                             <constraint firstItem="lUL-C8-JgT" firstAttribute="top" secondItem="5vT-wy-VD7" secondAttribute="top" constant="17" id="9qX-Xa-qhr"/>
-                            <constraint firstItem="UWZ-n6-DEE" firstAttribute="centerY" secondItem="XVW-6U-Az4" secondAttribute="centerY" id="CNi-0A-GCW"/>
                             <constraint firstItem="eRN-OX-Jpf" firstAttribute="leading" secondItem="24K-1A-sFd" secondAttribute="leading" id="LD6-QJ-BcF"/>
-                            <constraint firstItem="5vT-wy-VD7" firstAttribute="trailing" secondItem="XVW-6U-Az4" secondAttribute="trailing" constant="40" id="Mbi-NQ-7ii"/>
-                            <constraint firstItem="bem-D2-P56" firstAttribute="top" secondItem="aDj-Ea-v5i" secondAttribute="top" id="QyK-1J-Nyf"/>
                             <constraint firstItem="lUL-C8-JgT" firstAttribute="leading" secondItem="tsI-AK-Dlk" secondAttribute="leading" id="TXa-sn-Vo4"/>
-                            <constraint firstItem="bem-D2-P56" firstAttribute="centerY" secondItem="aDj-Ea-v5i" secondAttribute="centerY" id="Z9C-dp-Pb8"/>
                             <constraint firstItem="bem-D2-P56" firstAttribute="top" secondItem="tsI-AK-Dlk" secondAttribute="bottom" constant="8" symbolic="YES" id="ZGl-u6-Arh"/>
                             <constraint firstAttribute="bottom" secondItem="eRN-OX-Jpf" secondAttribute="bottom" id="akA-jy-g5K"/>
                             <constraint firstItem="UWZ-n6-DEE" firstAttribute="trailing" secondItem="bem-D2-P56" secondAttribute="trailing" id="b1a-6K-Psj"/>
                             <constraint firstItem="eRN-OX-Jpf" firstAttribute="top" secondItem="bem-D2-P56" secondAttribute="bottom" constant="33.5" id="ebj-qs-JKp"/>
                             <constraint firstItem="lUL-C8-JgT" firstAttribute="leading" secondItem="5vT-wy-VD7" secondAttribute="leading" constant="51" id="gid-lZ-lVk"/>
                             <constraint firstItem="UWZ-n6-DEE" firstAttribute="leading" secondItem="24K-1A-sFd" secondAttribute="leadingMargin" id="iRM-Xz-bSt"/>
-                            <constraint firstItem="XVW-6U-Az4" firstAttribute="leading" secondItem="UWZ-n6-DEE" secondAttribute="trailing" constant="4" id="ot9-Rs-65d"/>
-                            <constraint firstItem="tsI-AK-Dlk" firstAttribute="top" secondItem="XVW-6U-Az4" secondAttribute="bottom" constant="37" id="r2m-en-mbJ"/>
                             <constraint firstItem="UWZ-n6-DEE" firstAttribute="leading" secondItem="bem-D2-P56" secondAttribute="leading" id="rmO-qu-jSV"/>
                             <constraint firstAttribute="trailing" secondItem="eRN-OX-Jpf" secondAttribute="trailing" id="uWe-cL-mcO"/>
                         </constraints>
@@ -259,6 +260,11 @@
                             <color key="tintColor" name="BackgroundColor"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="dropOffTextField" destination="aDj-Ea-v5i" id="ifP-my-Zac"/>
+                        <outlet property="pickUpTextField" destination="CzU-Bl-JPn" id="pH2-ic-0gz"/>
+                        <outlet property="tableView" destination="eRN-OX-Jpf" id="n8j-fy-mie"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qkE-Cg-A8f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -288,6 +294,9 @@
             <point key="canvasLocation" x="-781.15942028985512" y="-1140.4017857142856"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="8uV-t1-v1C"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="circles.hexagongrid" catalog="system" width="128" height="112"/>
         <image name="figure.walk" catalog="system" width="95" height="128"/>

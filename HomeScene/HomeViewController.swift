@@ -61,14 +61,13 @@ class HomeViewController: UIViewController {
     //MARK: - Passing user's current location information to the drop off view controller screen
     
 
-    
-    
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let destinationViewController = segue.destination as? DropOffLocationViewController {
-//            if segue.identifier == K.Identifier.dropOffSceneSegue {
-//                destinationViewController.pickUpLocation = currentUserLocation
-//
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationViewController = segue.destination as? DropOffLocationViewController {
+            if segue.identifier == K.Identifier.homeToLocationsSegue {
+                destinationViewController.pickUpLocation = currentUserLocation
+            }
+        }
+    }
 //            } else if let routeDestinationViewControlloer = segue.destination as? RouteViewController, let dropoffLocation = sender as? Location {
 //                if segue.identifier == K.Identifier.dropOffSceneToRouteScene {
 //                routeDestinationViewControlloer.startLocation = currentUserLocation
@@ -78,7 +77,7 @@ class HomeViewController: UIViewController {
 //   }
 //    }
     
-    
+        
     @IBAction func searchPressed(_ sender: UIButton) {
        
         
@@ -172,7 +171,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let dropOffLocation = locations[indexPath.row]
-        performSegue(withIdentifier: K.Identifier.dropOffSceneToRouteScene, sender: dropOffLocation)
+        //performSegue(withIdentifier: K.Identifier.dropOffSceneToRouteScene, sender: dropOffLocation)
         
     }
     

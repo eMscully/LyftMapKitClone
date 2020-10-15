@@ -7,7 +7,7 @@ class DropOffLocationViewController: UIViewController {
     @IBOutlet weak var dropOffTextField: UITextField!
     @IBOutlet weak var pickUpTextField: UITextField!
     
-    @IBOutlet weak var cancelButtonPressed: UIBarButtonItem!
+
     @IBOutlet weak var tableView: UITableView!
     
     private var searchCompleter: MKLocalSearchCompleter?
@@ -71,14 +71,14 @@ extension DropOffLocationViewController: UITextFieldDelegate {
         }
         return true
 }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinationViewController = segue.destination as? RouteViewController {
-            if segue.identifier == K.Identifier.dropOffSceneToRouteScene {
-                pickUpLocation = destinationViewController.startLocation
-                dropOffLocation = destinationViewController.destination
-            }
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let destinationViewController = segue.destination as? RouteViewController {
+//            if segue.identifier == K.Identifier.dropOffSceneToRouteScene {
+//                pickUpLocation = destinationViewController.startLocation
+//                dropOffLocation = destinationViewController.destination
+//            }
+//        }
+//    }
 
 }
 extension DropOffLocationViewController: MKLocalSearchCompleterDelegate {

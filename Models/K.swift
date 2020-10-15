@@ -25,17 +25,9 @@ struct K {
     struct Identifier {
         static let locationCell = "LocationCell"
         static let rideCell = "RideQuoteCell"
-        static let dropOffSceneSegue = "goToDropOffScene"
-        static let rideQuoteSegue = "goToRideQuotes"
-        static let dropOffSceneToRouteScene = "dropOffSceneToRouteScene"
+        static let homeToLocationsSegue = "goToLocations"
     }
     
-    struct Storyboards {
-        let home = "MainStoryboard"
-        let dropOff = "DropOffLocationStoryboard"
-        let route = "RouteStoryboard"
-        let driver = "DriverStoryboard"
-        
-    }
+
 
 }
