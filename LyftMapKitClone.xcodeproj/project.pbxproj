@@ -23,7 +23,6 @@
 		5FBD458A25307BD50039A86C /* DropOffLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBD458925307BD50039A86C /* DropOffLocationViewController.swift */; };
 		5FBD458F25307CE10039A86C /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBD458E25307CE10039A86C /* RouteViewController.swift */; };
 		5FBD459725307CF10039A86C /* DriverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBD459625307CF10039A86C /* DriverViewController.swift */; };
-		5FBD459D25307D1E0039A86C /* Route.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FBD459B25307D1E0039A86C /* Route.storyboard */; };
 		5FBD45A225307D330039A86C /* Driver.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FBD45A125307D330039A86C /* Driver.storyboard */; };
 		5FBD45BD25307FE50039A86C /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBD45BC25307FE50039A86C /* Location.swift */; };
 		5FBD45C225307FF80039A86C /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBD45C125307FF80039A86C /* LocationManager.swift */; };
@@ -72,7 +71,6 @@
 		5FBD458925307BD50039A86C /* DropOffLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropOffLocationViewController.swift; sourceTree = "<group>"; };
 		5FBD458E25307CE10039A86C /* RouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteViewController.swift; sourceTree = "<group>"; };
 		5FBD459625307CF10039A86C /* DriverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverViewController.swift; sourceTree = "<group>"; };
-		5FBD459C25307D1E0039A86C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LyftMapKitClone/Base.lproj/Route.storyboard; sourceTree = "<group>"; };
 		5FBD45A125307D330039A86C /* Driver.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Driver.storyboard; sourceTree = "<group>"; };
 		5FBD45BC25307FE50039A86C /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		5FBD45C125307FF80039A86C /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -200,7 +198,6 @@
 				5FBD4556253077270039A86C /* Main.storyboard */,
 				5FFF4E182537CCBB003508EE /* RideQuoteCell.swift */,
 				5FBD45CF25308B070039A86C /* LocationCell.swift */,
-				5FBD459B25307D1E0039A86C /* Route.storyboard */,
 				5FBD45A125307D330039A86C /* Driver.storyboard */,
 			);
 			path = Views;
@@ -310,7 +307,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FBD455D253077280039A86C /* LaunchScreen.storyboard in Resources */,
-				5FBD459D25307D1E0039A86C /* Route.storyboard in Resources */,
 				5FBD455A253077280039A86C /* Assets.xcassets in Resources */,
 				5FBD45C72530803D0039A86C /* locations-json.json in Resources */,
 				5FBD45A225307D330039A86C /* Driver.storyboard in Resources */,
@@ -403,14 +399,6 @@
 				5FBD455C253077280039A86C /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		5FBD459B25307D1E0039A86C /* Route.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5FBD459C25307D1E0039A86C /* Base */,
-			);
-			name = Route.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
