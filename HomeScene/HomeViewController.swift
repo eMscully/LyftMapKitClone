@@ -28,20 +28,14 @@ class HomeViewController: UIViewController {
         
         locationManager = CLLocationManager()
         locationManager?.requestAlwaysAuthorization()
-
-  
         locationManager?.startUpdatingLocation()
+        locations = LocationManager.shared.getLocations()
 
 //MARK: - Delegatation continued:
         tableView.dataSource = self
         tableView.delegate = self
         mapView.delegate = self
-        
-      
-        locations = LocationManager.shared.getLocations()
-
-        
-        
+   
 //MARK: - Search button CALayer alterations
         searchButton
             .layer
@@ -62,15 +56,17 @@ class HomeViewController: UIViewController {
             if segue.identifier == K.Identifier.dropOffSceneSegue {
                 destinationViewController.pickUpLocation = currentUserLocation
                 
+            } else if let routeDestinationViewControlloer = segue.destination as? RouteViewController, let dropoffLocation = sender as? Location {
+                routeDestinationViewControlloer.startLocation = currentUserLocation
+                routeDestinationViewControlloer.destination = dropoffLocation
             }
         }
-    }
+   }
+    
     
     @IBAction func searchPressed(_ sender: UIButton) {
         
         performSegue(withIdentifier: K.Identifier.dropOffSceneSegue, sender: self)
-        
-    
 }
 }
 //MARK: - Core Location Manager Delegate Methods:
@@ -156,6 +152,11 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let dropOffLocation = locations[indexPath.row]
+        performSegue(withIdentifier: K.Identifier.routeSceneSegue, sender: dropOffLocation)
+        
+    }
     
 }
 //MARK: - Map View Delegate Methods

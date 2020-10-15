@@ -8,6 +8,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Route-->
+        <scene sceneID="ZX9-g9-Qaa">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Route" id="XQw-pi-DxC" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="hLw-lz-B9H"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uxn-h6-mrI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-127" y="-387"/>
+        </scene>
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -87,7 +97,7 @@
                                 </state>
                                 <connections>
                                     <action selector="searchPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EJG-bA-8u1"/>
-                                    <segue destination="ddA-7w-ynb" kind="presentation" identifier="goToDropOffScene" modalPresentationStyle="overCurrentContext" id="fXX-nW-oE9"/>
+                                    <segue destination="ddA-7w-ynb" kind="showDetail" identifier="goToDropOffScene" id="Ag8-ls-gfG"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="NIk-vu-Rmz">
@@ -125,6 +135,7 @@
                         <outlet property="mapView" destination="bEV-x9-olq" id="Ovs-cu-7da"/>
                         <outlet property="searchButton" destination="Asv-om-zlP" id="sqA-fD-wAJ"/>
                         <outlet property="tableView" destination="Mqp-id-lDa" id="STH-H3-ZUG"/>
+                        <segue destination="XQw-pi-DxC" kind="show" identifier="goToRouteScene" id="iJp-tF-r40"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
