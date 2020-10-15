@@ -146,14 +146,6 @@
             </objects>
             <point key="canvasLocation" x="-1303" y="-840"/>
         </scene>
-        <!--DropOffLocation-->
-        <scene sceneID="qNm-JN-Hav">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wxZ-25-GdM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <viewControllerPlaceholder storyboardName="DropOffLocation" id="nKU-wk-qBt" sceneMemberID="viewController"/>
-            </objects>
-            <point key="canvasLocation" x="-1217" y="-1202"/>
-        </scene>
     </scenes>
     <resources>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
