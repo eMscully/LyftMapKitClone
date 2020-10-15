@@ -40,11 +40,11 @@ class RouteViewController: UIViewController {
         tableView.dataSource = self
         mapView.delegate = self
         
-//        //Temporarily populating properties for data seeding:
-//        let locations = LocationManager.shared.getLocations()
-//        startLocation = locations[0]
-//        destination = locations[1]
-//
+        //Temporarily populating properties for data seeding:
+        let locations = LocationManager.shared.getLocations()
+        startLocation = locations[0]
+        destination = locations[1]
+
 
         
         startLocationLabel.text = startLocation.title

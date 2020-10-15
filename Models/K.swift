@@ -26,6 +26,8 @@ struct K {
         static let locationCell = "LocationCell"
         static let rideCell = "RideQuoteCell"
         static let homeToLocationsSegue = "goToLocations"
+        static let homeToRouteSegue = "goToRouteView"
+        static let locationsToRoute = "routeSegue"
     }
     
 

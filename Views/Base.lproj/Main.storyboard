@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
@@ -43,8 +43,8 @@
                                                     <color key="textColor" name="Turquoise"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="XZ9-dH-84k">
-                                                    <rect key="frame" x="10" y="10.5" width="38" height="39"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circles.hexagongrid" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="XZ9-dH-84k">
+                                                    <rect key="frame" x="10" y="11" width="38" height="38.5"/>
                                                     <color key="tintColor" name="CitrusGreen"/>
                                                 </imageView>
                                             </subviews>
@@ -67,6 +67,7 @@
                                         <connections>
                                             <outlet property="addressLabel" destination="egR-Vj-NJJ" id="tKf-3q-5MX"/>
                                             <outlet property="titleLabel" destination="Q7q-kn-fKn" id="0Kh-uF-EVS"/>
+                                            <segue destination="qy3-cS-mCe" kind="presentation" identifier="goToRouteView" modalPresentationStyle="fullScreen" id="h0G-fQ-OYY"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -87,6 +88,7 @@
                                     <color key="titleColor" name="BackgroundColor"/>
                                 </state>
                                 <connections>
+                                    <action selector="searchPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5dR-Dy-AiO"/>
                                     <segue destination="CFD-A7-2OU" kind="presentation" identifier="goToLocations" modalPresentationStyle="fullScreen" id="8uV-t1-v1C"/>
                                 </connections>
                             </button>
@@ -141,7 +143,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eRN-OX-Jpf">
-                                <rect key="frame" x="0.0" y="293" width="414" height="603"/>
+                                <rect key="frame" x="0.0" y="249" width="414" height="647"/>
                                 <color key="backgroundColor" name="BackgroundColor"/>
                                 <color key="separatorColor" name="CitrusGreen"/>
                                 <prototypes>
@@ -192,12 +194,13 @@
                                         <connections>
                                             <outlet property="addressLabel" destination="eyH-vH-thq" id="7yK-aE-4jR"/>
                                             <outlet property="titleLabel" destination="T4S-IN-bJW" id="xSC-jw-zq5"/>
+                                            <segue destination="qy3-cS-mCe" kind="presentation" identifier="routeSegue" modalPresentationStyle="fullScreen" id="pvd-kU-kIf"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="figure.walk" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="UWZ-n6-DEE">
-                                <rect key="frame" x="20" y="127.5" width="36" height="36"/>
+                                <rect key="frame" x="20" y="83.5" width="36" height="36"/>
                                 <color key="tintColor" name="Turquoise"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34.5" id="ryY-Lc-7p6"/>
@@ -205,33 +208,33 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lUL-C8-JgT">
-                                <rect key="frame" x="51" y="105" width="46.5" height="16"/>
+                                <rect key="frame" x="51" y="61" width="46.5" height="16"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                                 <color key="textColor" name="CitrusGreen"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drop-off:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsI-AK-Dlk">
-                                <rect key="frame" x="51" y="201" width="59" height="16"/>
+                                <rect key="frame" x="51" y="157" width="59" height="16"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                 <color key="textColor" name="CitrusGreen"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aDj-Ea-v5i">
-                                <rect key="frame" x="60" y="137" width="314" height="34.5"/>
+                                <rect key="frame" x="64" y="181" width="314" height="34.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="LightAccent"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="bem-D2-P56">
-                                <rect key="frame" x="20" y="224.5" width="36" height="36"/>
+                                <rect key="frame" x="20" y="180.5" width="36" height="36"/>
                                 <color key="tintColor" name="Turquoise"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34.5" id="cUq-aC-XuD"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Current Location" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CzU-Bl-JPn">
-                                <rect key="frame" x="60" y="41" width="314" height="34.5"/>
+                                <rect key="frame" x="64" y="85" width="314" height="34.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="LightAccent"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -286,9 +289,10 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OdJ-ts-rg9">
                                 <rect key="frame" x="0.0" y="511" width="414" height="273"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="BackgroundColor"/>
+                                <color key="separatorColor" name="BackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="50" id="CXf-jV-nT8" customClass="RideQuoteCell" customModule="LyftMapKitClone" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RideQuoteCell" rowHeight="50" id="CXf-jV-nT8" customClass="RideQuoteCell" customModule="LyftMapKitClone" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CXf-jV-nT8" id="ecV-nu-O6D">
@@ -303,45 +307,52 @@
                                                     <rect key="frame" x="73" y="29" width="48" height="14"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
-                                                    <color key="textColor" name="Turquoise"/>
+                                                    <color key="textColor" name="BackgroundColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="xTH-Lj-ElJ">
                                                     <rect key="frame" x="80" y="29" width="13" height="13"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="tintColor" name="Turquoise"/>
+                                                    <color key="tintColor" name="BackgroundColor"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$3.05" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qsm-ac-q00">
-                                                    <rect key="frame" x="305" y="9" width="43" height="17"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="14"/>
-                                                    <color key="textColor" name="Turquoise"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="7:15PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEG-pj-mGk">
-                                                    <rect key="frame" x="305" y="27" width="42" height="12"/>
+                                                    <rect key="frame" x="348" y="27" width="42" height="12"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
-                                                    <color key="textColor" name="LightAccent"/>
+                                                    <color key="textColor" name="BackgroundColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Shared" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K61-UK-CLu">
                                                     <rect key="frame" x="73" y="5" width="128" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                                    <color key="textColor" name="CitrusGreen"/>
+                                                    <color key="textColor" name="BackgroundColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$3.05" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qsm-ac-q00">
+                                                    <rect key="frame" x="343" y="9" width="43" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="14"/>
+                                                    <color key="textColor" name="BackgroundColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" name="BackgroundColor"/>
+                                        <color key="backgroundColor" name="Turquoise"/>
+                                        <connections>
+                                            <outlet property="capacityLabel" destination="EpV-px-yFz" id="hvq-r2-a1A"/>
+                                            <outlet property="priceLabel" destination="Qsm-ac-q00" id="Fsk-EL-zKh"/>
+                                            <outlet property="rideThumbnail" destination="xXB-UF-aPG" id="1lh-a3-Sev"/>
+                                            <outlet property="rideTypeLabel" destination="K61-UK-CLu" id="NXo-8s-vM3"/>
+                                            <outlet property="timeLabel" destination="cEG-pj-mGk" id="bc0-sc-p0t"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qv5-4o-1I8">
                                 <rect key="frame" x="51" y="808" width="312" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" name="Turquoise"/>
+                                <color key="backgroundColor" name="CitrusGreen"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
                                 <state key="normal" title="Select Shared">
                                     <color key="titleColor" name="BackgroundColor"/>
@@ -390,10 +401,34 @@
                             <constraint firstItem="7ST-dT-pyL" firstAttribute="leading" secondItem="LMW-Nl-FqA" secondAttribute="leading" constant="33" id="Sin-CX-XnB"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="backButton" destination="0cW-YE-lYA" id="s3t-0A-vcV"/>
+                        <outlet property="destinationLocationLabel" destination="miy-lD-AgT" id="qyJ-q0-WBf"/>
+                        <outlet property="mapView" destination="SeW-LF-Yjp" id="CX1-yd-WZY"/>
+                        <outlet property="routeLabelContainer" destination="7ST-dT-pyL" id="N1U-Lc-iCd"/>
+                        <outlet property="selectRideButton" destination="qv5-4o-1I8" id="pXl-fw-f5H"/>
+                        <outlet property="startLocationLabel" destination="jQz-Yx-a6m" id="bPJ-fd-uhH"/>
+                        <outlet property="tableView" destination="OdJ-ts-rg9" id="Qqz-Lb-jNW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pju-T0-dmI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1053.6231884057972" y="-881.91964285714278"/>
+            <point key="canvasLocation" x="951" y="-1151"/>
+        </scene>
+        <!--Driver View Controller-->
+        <scene sceneID="oZP-BD-hFO">
+            <objects>
+                <viewController id="lhA-u6-bqO" customClass="DriverViewController" customModule="LyftMapKitClone" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VIx-nj-n0G">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="E8o-7D-4pX"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ghB-5E-zeu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1738" y="-1099"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4cQ-X9-393">
@@ -416,11 +451,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xw6-pc-YfU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-781.15942028985512" y="-1140.4017857142856"/>
+            <point key="canvasLocation" x="-654" y="-1151"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="E0u-NS-jDG"/>
+        <segue reference="h0G-fQ-OYY"/>
+        <segue reference="8uV-t1-v1C"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.forward.circle" catalog="system" width="128" height="121"/>
@@ -431,7 +467,6 @@
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="pin" catalog="system" width="119" height="128"/>
         <image name="ride-shared" width="60" height="60"/>
-        <image name="star.circle" catalog="system" width="128" height="121"/>
         <image name="xmark.circle" catalog="system" width="128" height="121"/>
         <namedColor name="BackgroundColor">
             <color red="0.035000000149011612" green="0.14499999582767487" blue="0.19599999487400055" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

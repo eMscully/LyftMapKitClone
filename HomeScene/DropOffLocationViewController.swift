@@ -71,14 +71,14 @@ extension DropOffLocationViewController: UITextFieldDelegate {
         }
         return true
 }
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let destinationViewController = segue.destination as? RouteViewController {
-//            if segue.identifier == K.Identifier.dropOffSceneToRouteScene {
-//                pickUpLocation = destinationViewController.startLocation
-//                dropOffLocation = destinationViewController.destination
-//            }
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationViewController = segue.destination as? RouteViewController {
+            if segue.identifier == K.Identifier.locationsToRoute {
+                pickUpLocation = destinationViewController.startLocation
+                dropOffLocation = destinationViewController.destination
+            }
+        }
+    }
 
 }
 extension DropOffLocationViewController: MKLocalSearchCompleterDelegate {
