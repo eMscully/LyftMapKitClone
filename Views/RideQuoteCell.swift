@@ -14,7 +14,11 @@ class RideQuoteCell: UITableViewCell {
     func updateCell(with rideQuote: LyftRideQuote){
         rideThumbnail.image = UIImage(named: rideQuote.rideThumbnailImage)
         capacityLabel.text = rideQuote.passengerCapacity
-        priceLabel.text = String(format: "%.2f", rideQuote.ridePrice)
+        
+        
+        
+        let priceAsString = String(format: "%.2f", rideQuote.ridePrice)
+        priceLabel.text = "$\(priceAsString)"
         rideTypeLabel.text = rideQuote.rideType
         
         let dateAsTime = DateFormatter()
@@ -29,7 +33,7 @@ class RideQuoteCell: UITableViewCell {
         //if status is true, give the table cell a colored border
         if status {
             contentView.layer.cornerRadius = 5.0
-            contentView.layer.borderColor = UIColor(named: "LightAccent")?.cgColor
+            contentView.layer.borderColor = UIColor(named: "CitrusGreen")?.cgColor
             contentView.layer.borderWidth = 2.0
         }
 //if not,the table cell should remain as the default view

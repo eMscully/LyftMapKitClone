@@ -50,9 +50,9 @@ class LyftRideQuoteManager {
             
             let surcharge = 3.0
             
-            return [LyftRideQuote(img: K.Thumbnails.shared, car: K.RideName.shared, price: surcharge + (distance * 0.005), arrivalTime: Date(), capacity: K.Passengers.sharedCapacity),
-                    LyftRideQuote(img: K.Thumbnails.compact, car: K.RideName.compact, price: surcharge + (distance * 0.009), arrivalTime: Date(), capacity: K.Passengers.compactCapacity),
-                    LyftRideQuote(img: K.Thumbnails.large, car: K.RideName.large, price: surcharge + (distance * 0.015), arrivalTime: Date(), capacity: K.Passengers.largeCapacity)]
+            return [LyftRideQuote(img: K.Thumbnails.shared, car: K.RideName.shared, price: surcharge + (distance * 0.0005), arrivalTime: Date(), capacity: K.Passengers.sharedCapacity),
+                    LyftRideQuote(img: K.Thumbnails.compact, car: K.RideName.compact, price: surcharge + (distance * 0.0009), arrivalTime: Date(), capacity: K.Passengers.compactCapacity),
+                    LyftRideQuote(img: K.Thumbnails.large, car: K.RideName.large, price: surcharge + (distance * 0.0015), arrivalTime: Date(), capacity: K.Passengers.largeCapacity)]
         }
         
         
