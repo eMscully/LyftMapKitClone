@@ -14,7 +14,7 @@ class RideQuoteCell: UITableViewCell {
     func updateCell(with rideQuote: LyftRideQuote){
         rideThumbnail.image = UIImage(named: rideQuote.rideThumbnailImage)
         capacityLabel.text = rideQuote.passengerCapacity
-        priceLabel.text = String(rideQuote.ridePrice)
+        priceLabel.text = String(format: "%.2f", rideQuote.ridePrice)
         rideTypeLabel.text = rideQuote.rideType
         
         let dateAsTime = DateFormatter()
@@ -22,6 +22,24 @@ class RideQuoteCell: UITableViewCell {
         dateAsTime.dateFormat = "hh:mma"
         timeLabel.text = dateAsTime.string(from: rideQuote.arrivalTime)
     }
+    
+   //The updateSelectedStatus method evaluates whether cell selected is true or false and then changes the UI accordingly to signal/differentiate to user which cell they've selected
+    
+    func updateSelectedStatus(status: Bool) {
+        //if status is true, give the table cell a colored border
+        if status {
+            contentView.layer.cornerRadius = 5.0
+            contentView.layer.borderColor = UIColor(named: "LightAccent")?.cgColor
+            contentView.layer.borderWidth = 2.0
+        }
+//if not,the table cell should remain as the default view
+        else {
+            contentView.layer.borderWidth = 0.0
+        }
+    
+    
+    }
+    
     }
         
 

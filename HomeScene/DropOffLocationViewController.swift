@@ -80,8 +80,8 @@ extension DropOffLocationViewController: UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destinationViewController = segue.destination as? RouteViewController {
             if segue.identifier == K.Identifier.rideQuoteSegue {
-                dropOffTextField.text = destinationViewController.destinationLocationLabel.text
-                pickUpTextField.text = destinationViewController.startLocationLabel.text
+                pickUpLocation = destinationViewController.startLocation
+                dropOffLocation = destinationViewController.destination
             }
         }
     }

@@ -5,7 +5,7 @@ import CoreLocation
 class LyftRideQuoteManager {
     static let shared = LyftRideQuoteManager()
     
-    private init() {
+    private init() {}
         
         
         /**
@@ -59,5 +59,4 @@ class LyftRideQuoteManager {
     }
     
     
-    
-}
+

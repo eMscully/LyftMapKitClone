@@ -111,8 +111,8 @@
 			children = (
 				5FBD4554253077270039A86C /* HomeViewController.swift */,
 				5FBD458925307BD50039A86C /* DropOffLocationViewController.swift */,
-				5FBD459625307CF10039A86C /* DriverViewController.swift */,
 				5FBD458E25307CE10039A86C /* RouteViewController.swift */,
+				5FBD459625307CF10039A86C /* DriverViewController.swift */,
 			);
 			name = Controllers;
 			path = HomeScene;
