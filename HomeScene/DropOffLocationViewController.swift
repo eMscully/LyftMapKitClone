@@ -5,7 +5,8 @@ import MapKit
 class DropOffLocationViewController: UIViewController {
 
     @IBOutlet weak var dropOffTextField: UITextField!
-  
+    @IBOutlet weak var pickUpTextField: UITextField!
+    
     @IBOutlet weak var cancelButtonPressed: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     
@@ -37,6 +38,8 @@ class DropOffLocationViewController: UIViewController {
     
 
     @IBAction func dropOffTextFieldPressed(_ sender: UITextField) {
+      
+
     }
 
     
@@ -49,7 +52,7 @@ extension DropOffLocationViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell") as! LocationCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.Identifier.locationCell) as! LocationCell
        
         if searchResults.isEmpty {
             let location = locations[indexPath.row]
@@ -59,6 +62,7 @@ extension DropOffLocationViewController: UITableViewDelegate, UITableViewDataSou
             cell.updateCell(with: searchResult)
             
         }
+        
         return cell
     }
     
@@ -73,6 +77,15 @@ extension DropOffLocationViewController: UITextFieldDelegate {
         }
         return true
 }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationViewController = segue.destination as? RouteViewController {
+            if segue.identifier == K.Identifier.rideQuoteSegue {
+                dropOffTextField.text = destinationViewController.destinationLocationLabel.text
+                pickUpTextField.text = destinationViewController.startLocationLabel.text
+            }
+        }
+    }
+
 }
 extension DropOffLocationViewController: MKLocalSearchCompleterDelegate {
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {

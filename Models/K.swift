@@ -21,5 +21,12 @@ struct K {
 		static let compactCapacity = "4"
 		static let largeCapacity = "6" 
 	}
+    
+    struct Identifier {
+        static let locationCell = "LocationCell"
+        static let rideCell = "RideQuoteCell"
+        static let dropOffSceneSegue = "goToDropOffScene"
+        static let rideQuoteSegue = "goToRideQuotes"
+    }
 
 }

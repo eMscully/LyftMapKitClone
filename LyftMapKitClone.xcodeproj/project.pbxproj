@@ -29,6 +29,7 @@
 		5FBD45C225307FF80039A86C /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBD45C125307FF80039A86C /* LocationManager.swift */; };
 		5FBD45C72530803D0039A86C /* locations-json.json in Resources */ = {isa = PBXBuildFile; fileRef = 5FBD45C62530803D0039A86C /* locations-json.json */; };
 		5FBD45D025308B070039A86C /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBD45CF25308B070039A86C /* LocationCell.swift */; };
+		5FFF4E192537CCBB003508EE /* RideQuoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFF4E182537CCBB003508EE /* RideQuoteCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		5FBD45C125307FF80039A86C /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		5FBD45C62530803D0039A86C /* locations-json.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "locations-json.json"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		5FBD45CF25308B070039A86C /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
+		5FFF4E182537CCBB003508EE /* RideQuoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideQuoteCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				5FBD4556253077270039A86C /* Main.storyboard */,
+				5FFF4E182537CCBB003508EE /* RideQuoteCell.swift */,
 				5FBD45CF25308B070039A86C /* LocationCell.swift */,
 				5FBD458325307BAB0039A86C /* DropOffLocation.storyboard */,
 				5FBD459B25307D1E0039A86C /* Route.storyboard */,
@@ -341,6 +344,7 @@
 				5FBD4555253077270039A86C /* HomeViewController.swift in Sources */,
 				5FBD4551253077270039A86C /* AppDelegate.swift in Sources */,
 				5FBD458A25307BD50039A86C /* DropOffLocationViewController.swift in Sources */,
+				5FFF4E192537CCBB003508EE /* RideQuoteCell.swift in Sources */,
 				5F042D37253152EF001693E1 /* LyftRideQuoteManager.swift in Sources */,
 				5FBD45C225307FF80039A86C /* LocationManager.swift in Sources */,
 				5FBD458F25307CE10039A86C /* RouteViewController.swift in Sources */,

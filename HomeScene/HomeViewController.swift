@@ -59,7 +59,7 @@ class HomeViewController: UIViewController {
     //MARK: - Passing user's current location information to the drop off view controller screen
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destinationViewController = segue.destination as? DropOffLocationViewController {
-            if segue.identifier == "goToDropOffScene" {
+            if segue.identifier == K.Identifier.dropOffSceneSegue {
                 destinationViewController.pickUpLocation = currentUserLocation
                 
             }
@@ -68,7 +68,7 @@ class HomeViewController: UIViewController {
     
     @IBAction func searchPressed(_ sender: UIButton) {
         
-        performSegue(withIdentifier: "goToDropOffScene", sender: self)
+        performSegue(withIdentifier: K.Identifier.dropOffSceneSegue, sender: self)
         
     
 }
@@ -150,7 +150,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell") as! LocationCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.Identifier.locationCell) as! LocationCell
         let location = locations[indexPath.row]
         cell.updateCell(with: location)
         return cell
