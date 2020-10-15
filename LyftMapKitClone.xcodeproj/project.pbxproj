@@ -20,7 +20,6 @@
 		5FBD455D253077280039A86C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FBD455B253077280039A86C /* LaunchScreen.storyboard */; };
 		5FBD4568253077280039A86C /* LyftMapKitCloneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBD4567253077280039A86C /* LyftMapKitCloneTests.swift */; };
 		5FBD4573253077280039A86C /* LyftMapKitCloneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBD4572253077280039A86C /* LyftMapKitCloneUITests.swift */; };
-		5FBD458525307BAB0039A86C /* DropOffLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FBD458325307BAB0039A86C /* DropOffLocation.storyboard */; };
 		5FBD458A25307BD50039A86C /* DropOffLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBD458925307BD50039A86C /* DropOffLocationViewController.swift */; };
 		5FBD458F25307CE10039A86C /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBD458E25307CE10039A86C /* RouteViewController.swift */; };
 		5FBD459725307CF10039A86C /* DriverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBD459625307CF10039A86C /* DriverViewController.swift */; };
@@ -70,7 +69,6 @@
 		5FBD456E253077280039A86C /* LyftMapKitCloneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LyftMapKitCloneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FBD4572253077280039A86C /* LyftMapKitCloneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyftMapKitCloneUITests.swift; sourceTree = "<group>"; };
 		5FBD4574253077280039A86C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5FBD458425307BAB0039A86C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LyftMapKitClone/Base.lproj/DropOffLocation.storyboard; sourceTree = "<group>"; };
 		5FBD458925307BD50039A86C /* DropOffLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropOffLocationViewController.swift; sourceTree = "<group>"; };
 		5FBD458E25307CE10039A86C /* RouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteViewController.swift; sourceTree = "<group>"; };
 		5FBD459625307CF10039A86C /* DriverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverViewController.swift; sourceTree = "<group>"; };
@@ -202,7 +200,6 @@
 				5FBD4556253077270039A86C /* Main.storyboard */,
 				5FFF4E182537CCBB003508EE /* RideQuoteCell.swift */,
 				5FBD45CF25308B070039A86C /* LocationCell.swift */,
-				5FBD458325307BAB0039A86C /* DropOffLocation.storyboard */,
 				5FBD459B25307D1E0039A86C /* Route.storyboard */,
 				5FBD45A125307D330039A86C /* Driver.storyboard */,
 			);
@@ -316,7 +313,6 @@
 				5FBD459D25307D1E0039A86C /* Route.storyboard in Resources */,
 				5FBD455A253077280039A86C /* Assets.xcassets in Resources */,
 				5FBD45C72530803D0039A86C /* locations-json.json in Resources */,
-				5FBD458525307BAB0039A86C /* DropOffLocation.storyboard in Resources */,
 				5FBD45A225307D330039A86C /* Driver.storyboard in Resources */,
 				5FBD4558253077270039A86C /* Main.storyboard in Resources */,
 			);
@@ -407,14 +403,6 @@
 				5FBD455C253077280039A86C /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		5FBD458325307BAB0039A86C /* DropOffLocation.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5FBD458425307BAB0039A86C /* Base */,
-			);
-			name = DropOffLocation.storyboard;
 			sourceTree = "<group>";
 		};
 		5FBD459B25307D1E0039A86C /* Route.storyboard */ = {
