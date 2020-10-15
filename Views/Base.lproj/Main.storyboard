@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qy3-cS-mCe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
@@ -143,7 +143,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eRN-OX-Jpf">
-                                <rect key="frame" x="0.0" y="249" width="414" height="647"/>
+                                <rect key="frame" x="0.0" y="293" width="414" height="603"/>
                                 <color key="backgroundColor" name="BackgroundColor"/>
                                 <color key="separatorColor" name="CitrusGreen"/>
                                 <prototypes>
@@ -200,7 +200,7 @@
                                 </prototypes>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="figure.walk" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="UWZ-n6-DEE">
-                                <rect key="frame" x="20" y="83.5" width="36" height="36"/>
+                                <rect key="frame" x="20" y="127.5" width="36" height="36"/>
                                 <color key="tintColor" name="Turquoise"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34.5" id="ryY-Lc-7p6"/>
@@ -208,13 +208,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lUL-C8-JgT">
-                                <rect key="frame" x="51" y="61" width="46.5" height="16"/>
+                                <rect key="frame" x="51" y="105" width="46.5" height="16"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                                 <color key="textColor" name="CitrusGreen"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drop-off:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsI-AK-Dlk">
-                                <rect key="frame" x="51" y="157" width="59" height="16"/>
+                                <rect key="frame" x="51" y="201" width="59" height="16"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                 <color key="textColor" name="CitrusGreen"/>
                                 <nil key="highlightedColor"/>
@@ -227,7 +227,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="bem-D2-P56">
-                                <rect key="frame" x="20" y="180.5" width="36" height="36"/>
+                                <rect key="frame" x="20" y="224.5" width="36" height="36"/>
                                 <color key="tintColor" name="Turquoise"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34.5" id="cUq-aC-XuD"/>
@@ -390,6 +390,9 @@
                                 <color key="backgroundColor" name="Turquoise"/>
                                 <color key="tintColor" name="BackgroundColor"/>
                                 <state key="normal" image="arrow.uturn.left.circle" catalog="system"/>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="qy3-cS-mCe" eventType="touchUpInside" id="CYW-aV-SH8"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7ST-dT-pyL">
                                 <rect key="frame" x="33" y="54" width="348" height="49"/>
@@ -458,7 +461,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pju-T0-dmI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="950.72463768115949" y="-1151.1160714285713"/>
+            <point key="canvasLocation" x="1365" y="-1172"/>
         </scene>
         <!--Driver View Controller-->
         <scene sceneID="oZP-BD-hFO">
@@ -467,13 +470,36 @@
                     <view key="view" contentMode="scaleToFill" id="VIx-nj-n0G">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="sSA-vW-ztQ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="575"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QVY-Pr-nQu">
+                                <rect key="frame" x="20" y="515" width="33" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="arrow.uturn.left.circle" catalog="system"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ARRIVES IN 5 MIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CLJ-rm-W1d">
+                                <rect key="frame" x="125" y="596" width="164" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2gj-m0-YCl">
+                                <rect key="frame" x="0.0" y="642" width="414" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="E8o-7D-4pX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ghB-5E-zeu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1738" y="-1099"/>
+            <point key="canvasLocation" x="2243" y="-1188"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4cQ-X9-393">
@@ -501,7 +527,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="pvd-kU-kIf"/>
-        <segue reference="8uV-t1-v1C"/>
+        <segue reference="E0u-NS-jDG"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.forward.circle" catalog="system" width="128" height="121"/>

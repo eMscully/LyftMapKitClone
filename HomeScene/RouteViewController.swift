@@ -40,10 +40,13 @@ class RouteViewController: UIViewController {
         tableView.dataSource = self
         mapView.delegate = self
         
+        
+        
+        
         //Temporarily populating properties for data seeding:
-        let locations = LocationManager.shared.getLocations()
-        startLocation = locations[0]
-        destination = locations[1]
+//        let locations = LocationManager.shared.getLocations()
+//        startLocation = locations[0]
+//        destination = locations[1]
 
 
         
@@ -63,6 +66,12 @@ class RouteViewController: UIViewController {
 
     displayRoute(start: startLocation, end: destination)
     }
+    
+    
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
+    
 
 }
 //MARK: - UITableView delegate methods
