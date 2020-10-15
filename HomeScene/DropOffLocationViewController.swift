@@ -3,7 +3,17 @@ import UIKit
 import MapKit
 
 class DropOffLocationViewController: UIViewController {
+    init?(pickUpLocation: Location, coder: NSCoder) {
+      //1
+        self.pickUpLocation = pickUpLocation
+      //2
+      super.init(coder: coder)
 
+    }
+
+    required init?(coder: NSCoder) {
+      fatalError("init(coder:) is not implemented")
+    }
     @IBOutlet weak var dropOffTextField: UITextField!
     @IBOutlet weak var pickUpTextField: UITextField!
     
@@ -35,6 +45,9 @@ class DropOffLocationViewController: UIViewController {
      
        
     }
+    
+
+
     
 
     @IBAction func dropOffTextFieldPressed(_ sender: UITextField) {
@@ -79,7 +92,7 @@ extension DropOffLocationViewController: UITextFieldDelegate {
 }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destinationViewController = segue.destination as? RouteViewController {
-            if segue.identifier == K.Identifier.rideQuoteSegue {
+            if segue.identifier == K.Identifier.dropOffSceneToRouteScene {
                 pickUpLocation = destinationViewController.startLocation
                 dropOffLocation = destinationViewController.destination
             }

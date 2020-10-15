@@ -5,12 +5,17 @@ import CoreLocation
 
 class HomeViewController: UIViewController {
 
+
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var mapView: MKMapView!
     
     @IBOutlet weak var searchButton: UIButton!
     
+
+    
+
+
     private var locationManager: CLLocationManager?
     
     var locations = [Location]()
@@ -19,9 +24,12 @@ class HomeViewController: UIViewController {
   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        navigationController?.isNavigationBarHidden = true 
+        navigationController?.isNavigationBarHidden = true
+        
+
     }
-  
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 //MARK: - Core Location Manager Configuration and Delegation:
@@ -51,24 +59,34 @@ class HomeViewController: UIViewController {
             .shadowRadius = 1.0
     }
     //MARK: - Passing user's current location information to the drop off view controller screen
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinationViewController = segue.destination as? DropOffLocationViewController {
-            if segue.identifier == K.Identifier.dropOffSceneSegue {
-                destinationViewController.pickUpLocation = currentUserLocation
-                
-            } else if let routeDestinationViewControlloer = segue.destination as? RouteViewController, let dropoffLocation = sender as? Location {
-                routeDestinationViewControlloer.startLocation = currentUserLocation
-                routeDestinationViewControlloer.destination = dropoffLocation
-            }
-        }
-   }
+    
+
+    
+    
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let destinationViewController = segue.destination as? DropOffLocationViewController {
+//            if segue.identifier == K.Identifier.dropOffSceneSegue {
+//                destinationViewController.pickUpLocation = currentUserLocation
+//
+//            } else if let routeDestinationViewControlloer = segue.destination as? RouteViewController, let dropoffLocation = sender as? Location {
+//                if segue.identifier == K.Identifier.dropOffSceneToRouteScene {
+//                routeDestinationViewControlloer.startLocation = currentUserLocation
+//                routeDestinationViewControlloer.destination = dropoffLocation
+//            }
+//        }
+//   }
+//    }
     
     
     @IBAction func searchPressed(_ sender: UIButton) {
+       
         
-        performSegue(withIdentifier: K.Identifier.dropOffSceneSegue, sender: self)
+
+//        performSegue(withIdentifier: K.Identifier.dropOffSceneSegue, sender: self)
 }
 }
+
 //MARK: - Core Location Manager Delegate Methods:
 
 extension HomeViewController: CLLocationManagerDelegate {
@@ -154,7 +172,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let dropOffLocation = locations[indexPath.row]
-        performSegue(withIdentifier: K.Identifier.routeSceneSegue, sender: dropOffLocation)
+        performSegue(withIdentifier: K.Identifier.dropOffSceneToRouteScene, sender: dropOffLocation)
         
     }
     

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="liJ-nf-6rq">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
@@ -8,16 +8,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Route-->
-        <scene sceneID="ZX9-g9-Qaa">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Route" id="XQw-pi-DxC" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="hLw-lz-B9H"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Uxn-h6-mrI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-127" y="-387"/>
-        </scene>
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -96,8 +86,7 @@
                                     <color key="titleColor" name="BackgroundColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="searchPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EJG-bA-8u1"/>
-                                    <segue destination="ddA-7w-ynb" kind="showDetail" identifier="goToDropOffScene" id="Ag8-ls-gfG"/>
+                                    <segue destination="nKU-wk-qBt" kind="showDetail" identifier="goToDropOffStoryboard" id="dKo-QG-OdU"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="NIk-vu-Rmz">
@@ -131,26 +120,42 @@
                             <constraint firstItem="bEV-x9-olq" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="xt3-0z-aDW"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="K5i-41-us8"/>
                     <connections>
                         <outlet property="mapView" destination="bEV-x9-olq" id="Ovs-cu-7da"/>
-                        <outlet property="searchButton" destination="Asv-om-zlP" id="sqA-fD-wAJ"/>
+                        <outlet property="searchButton" destination="Asv-om-zlP" id="ZB2-Nc-k4Y"/>
                         <outlet property="tableView" destination="Mqp-id-lDa" id="STH-H3-ZUG"/>
-                        <segue destination="XQw-pi-DxC" kind="show" identifier="goToRouteScene" id="iJp-tF-r40"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="536" y="-538"/>
+            <point key="canvasLocation" x="-499" y="-1075"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MmE-AQ-0Rv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="liJ-nf-6rq" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vwl-2M-n5Q">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="kde-qB-pQL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RJX-uN-j7D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1303" y="-840"/>
         </scene>
         <!--DropOffLocation-->
-        <scene sceneID="uDt-Ug-VlQ">
+        <scene sceneID="qNm-JN-Hav">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="MainStoryboard" storyboardName="DropOffLocation" id="ddA-7w-ynb" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="UdI-3M-uh9"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UGd-09-I18" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="DropOffLocation" id="nKU-wk-qBt" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wxZ-25-GdM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-862" y="-187"/>
+            <point key="canvasLocation" x="-1217" y="-1202"/>
         </scene>
     </scenes>
     <resources>

@@ -14,11 +14,16 @@ class RouteViewController: UIViewController {
     
     @IBOutlet weak var selectRideButton: UIButton!
     
-   
+//MARK: - Class properties:
+    
     var lyftRideQuotes = [LyftRideQuote]()
-    var startLocation: Location?
-    var destination: Location?
+    var startLocation: Location!
+    var destination: Location!
+        
+    //this property is used to keep track of what cell the user selects because the selected cell's appearance will change
     var selectedIndex = 1
+    
+//MARK: - Lifecycle methods:
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -33,26 +38,35 @@ class RouteViewController: UIViewController {
 
         tableView.delegate = self
         tableView.dataSource = self
+        mapView.delegate = self
         
 //        //Temporarily populating properties for data seeding:
 //        let locations = LocationManager.shared.getLocations()
 //        startLocation = locations[0]
 //        destination = locations[1]
-        
+//
 
-//        startLocationLabel.text = startLocation?.title
-//        destinationLocationLabel.text = destination?.title
-        lyftRideQuotes = LyftRideQuoteManager.shared.getRideQuotes(pickUpLocation: startLocation!, dropOffLocation: destination!)
+        
+        startLocationLabel.text = startLocation.title
+        destinationLocationLabel.text = destination.title
+        
+        
+        lyftRideQuotes = LyftRideQuoteManager.shared.getRideQuotes(pickUpLocation: startLocation, dropOffLocation: destination)
           
-
+ //MARK: - Create route start and end point annotations
+        let pickUpCoord = CLLocationCoordinate2D(latitude: startLocation!.latitude, longitude: startLocation!.longitude)
+        let dropOffCoord = CLLocationCoordinate2D(latitude: destination!.latitude, longitude: destination!.longitude)
         
+        let pickUpAnnotation = RouteAnnotation(coord: pickUpCoord, locationType: "pickUp")
+        let dropOffAnnotation = RouteAnnotation(coord: dropOffCoord, locationType: "dropOff")
+        mapView.addAnnotations([pickUpAnnotation, dropOffAnnotation])
 
+    displayRoute(start: startLocation, end: destination)
     }
-    
-
-
 
 }
+//MARK: - UITableView delegate methods
+
 extension RouteViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return lyftRideQuotes.count
@@ -71,21 +85,37 @@ extension RouteViewController: UITableViewDelegate, UITableViewDataSource {
         let selectedRideQuote = lyftRideQuotes[indexPath.row]
         selectRideButton.setTitle("Select \(selectedRideQuote.rideType)", for: .normal)
         tableView.reloadData()
-        
-    }
-    
-    
-    
+        }
 }
+//MARK: - Map View Delegate methods:
 
 extension RouteViewController: MKMapViewDelegate {
-    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+
+func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {return nil}
         
+        let reuseIdentifier = "RouteAnnotation"
+    var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier)
+    
+    if annotationView == nil {
+        annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
+    } else {
+        annotationView?.annotation = annotation
+       
+        }
+    let routeAnnotation = annotation as! RouteAnnotation
+    annotationView!.image = UIImage(named: "\(routeAnnotation.locationType)")
+    return annotationView
     }
     
-    func displayRoute(start: CLLocationCoordinate2D, end: CLLocationCoordinate2D){
-        let startPlacemark = MKPlacemark(coordinate: start)
-        let endPlacemark = MKPlacemark(coordinate: end)
+    
+func displayRoute(start: Location, end: Location){
+    
+    let startCoordinate = CLLocationCoordinate2D(latitude: start.latitude, longitude: start.longitude)
+    let endCoordinate = CLLocationCoordinate2D(latitude: end.latitude, longitude: end.longitude)
+    
+        let startPlacemark = MKPlacemark(coordinate: startCoordinate)
+        let endPlacemark = MKPlacemark(coordinate: endCoordinate)
         
         let directionsRequest = MKDirections.Request()
         directionsRequest.source = MKMapItem(placemark: startPlacemark)
@@ -95,14 +125,24 @@ extension RouteViewController: MKMapViewDelegate {
         let directions = MKDirections(request: directionsRequest)
         directions.calculate { (response, error) in
             if let error = error {
-                print("Error calculating route directions: \(error.localizedDescription)")
+                print("Error calculating route directions: \(error)")
                 return
             }
-          if let response = response {
+            guard let response = response else {
+                return
+            }
+         
             let route = response.routes.first!
             self.mapView.addOverlay(route.polyline, level: .aboveRoads)
             self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, edgePadding: UIEdgeInsets(top: 80.0, left: 80.0, bottom: 80.0, right: 80.0), animated: true)
         }
     }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.lineWidth = 5.0
+        renderer.strokeColor = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
+        return renderer
+    }
 }
-}
+
