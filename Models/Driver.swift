@@ -1,5 +1,6 @@
 
 import Foundation
+import CoreLocation
 
 class Driver {
 
@@ -13,13 +14,15 @@ class Driver {
     let rating: Float
 
     let carModel: String
-
+    let coordinate: CLLocationCoordinate2D
  
-    init(name: String, driverPic: String, licenseNumber: String, rating: Float, carModel: String) {
+    init(name: String, driverPic: String, licenseNumber: String, rating: Float, carModel: String, coord: CLLocationCoordinate2D) {
     	self.name = name
     	self.driverPic = driverPic
     	self.licenseNumber = licenseNumber
     	self.rating = rating
     	self.carModel = carModel
+        coordinate = coord
 
+}
 }
