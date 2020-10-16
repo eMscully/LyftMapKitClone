@@ -66,6 +66,16 @@ class DriverViewController: UIViewController {
 //Route starting coordinate is the driver's current location and the route end point is where the user currently is to be picked up
         displayRoute(start: driverLocation, end: pickupLocation)
     }
+    
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    
+    @IBAction func editButtonPressed(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
+    
 }
 
 extension DriverViewController: MKMapViewDelegate {

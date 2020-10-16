@@ -72,6 +72,19 @@ class RouteViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let goToDriverVC = segue.destination as? DriverViewController {
+            if segue.identifier == K.Identifier.goToDriverSegue {
+                goToDriverVC.pickupLocation = startLocation
+                goToDriverVC.dropOffLocation = destination
+            }
+        }
+    }
+    
+    @IBAction func selectRidePressed(_ sender: UIButton) {
+        performSegue(withIdentifier: K.Identifier.goToDriverSegue, sender: self)
+    }
+    
 
 }
 //MARK: - UITableView delegate methods

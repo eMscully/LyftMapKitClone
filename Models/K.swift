@@ -28,6 +28,7 @@ struct K {
         static let homeToLocationsSegue = "goToLocations"
         static let homeToRouteSegue = "goToRouteView"
         static let locationsToRoute = "routeSegue"
+        static let goToDriverSegue = "goToDriver"
     }
     
 
