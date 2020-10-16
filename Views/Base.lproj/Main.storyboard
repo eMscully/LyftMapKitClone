@@ -480,7 +480,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sSA-vW-ztQ">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="sSA-vW-ztQ">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="590"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="590" id="kf8-Pu-9su"/>

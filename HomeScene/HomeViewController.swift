@@ -186,7 +186,6 @@ extension HomeViewController: MKMapViewDelegate {
         mapView.addAnnotations([CarAnnotation(coordinate: c1), CarAnnotation(coordinate: c2), CarAnnotation(coordinate: c3)])
         
         
-        
     }
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation {

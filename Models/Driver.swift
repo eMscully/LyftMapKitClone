@@ -14,6 +14,8 @@ class Driver {
     let rating: Float
 
     let carModel: String
+    
+    //Driver class has a coordinate property to use for a driver annotation on the map view 
     let coordinate: CLLocationCoordinate2D
  
     init(name: String, driverPic: String, licenseNumber: String, rating: Float, carModel: String, coord: CLLocationCoordinate2D) {

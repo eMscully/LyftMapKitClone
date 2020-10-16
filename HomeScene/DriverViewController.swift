@@ -55,18 +55,26 @@ class DriverViewController: UIViewController {
         let pickupAnnotation = RouteAnnotation(coord: pickupCoordinate, locationType: "pickup")
         let dropOffAnnotation = RouteAnnotation(coord: dropOffCoordinate, locationType: "dropOff")
         
-        mapView.addAnnotations([driverAnnotation, pickupAnnotation, dropOffAnnotation])
+        //Create a reusable constant for the multiple annotations; explicitly declare the map annotation type because Swift will infer that the map annotations array is an array of NSObjects. The .addAnnotations and .showAnnotations delegate methods require an array of MKAnnotations, NOT NSObjects
+        let mapAnnotations: [MKAnnotation] = [driverAnnotation, pickupAnnotation, dropOffAnnotation]
+        mapView.addAnnotations(mapAnnotations)
+        mapView.showAnnotations(mapAnnotations, animated: false)
+       
         
+        let driverLocation = Location(title: driver.name, address: driver.licenseNumber, latitude: driver.coordinate.latitude, longitude: driver.coordinate.longitude)
+       
+//Route starting coordinate is the driver's current location and the route end point is where the user currently is to be picked up
+        displayRoute(start: driverLocation, end: pickupLocation)
     }
 }
 
 extension DriverViewController: MKMapViewDelegate {
-    
+    //MARK: - Set up annotation views
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation {
             return nil
         }
-        
+    
         let reuseIdentifier = annotation is CarAnnotation ? "CarAnnotation" : "RouteAnnotation"
         
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier)
@@ -76,7 +84,7 @@ extension DriverViewController: MKMapViewDelegate {
         } else {
             annotationView?.annotation = annotation
         }
-        
+ 
         if annotation is CarAnnotation {
             annotationView?.image = UIImage(named: K.Thumbnails.carAnnotation)
         }
@@ -86,8 +94,45 @@ extension DriverViewController: MKMapViewDelegate {
         
         return annotationView
     }
-}
-
-extension DriverViewController {
+//MARK: - Set up Route view
+        
+func displayRoute(start: Location, end: Location){
+    
+        let startCoordinate = CLLocationCoordinate2D(latitude: start.latitude, longitude: start.longitude)
+        let endCoordinate = CLLocationCoordinate2D(latitude: end.latitude, longitude: end.longitude)
+    
+            let startPlacemark = MKPlacemark(coordinate: startCoordinate)
+            let endPlacemark = MKPlacemark(coordinate: endCoordinate)
+    
+            let directionsRequest = MKDirections.Request()
+            directionsRequest.source = MKMapItem(placemark: startPlacemark)
+            directionsRequest.destination = MKMapItem(placemark: endPlacemark)
+            directionsRequest.transportType = .automobile
+    
+            let directions = MKDirections(request: directionsRequest)
+            directions.calculate { (response, error) in
+                if let error = error {
+                    print("Error calculating route directions: \(error)")
+                    return
+                }
+                guard let response = response else {
+                    return
+                }
+    
+                let route = response.routes.first!
+                self.mapView.addOverlay(route.polyline, level: .aboveRoads)
+               
+            }
+       }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+            let renderer = MKPolylineRenderer(overlay: overlay)
+            renderer.lineWidth = 5.0
+            renderer.strokeColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
+            return renderer
+        }
     
 }
+
+
+
