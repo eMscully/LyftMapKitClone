@@ -1,6 +1,7 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 class DriverViewController: UIViewController {
     var lyftRideQuotes = [LyftRideQuote]()
@@ -20,16 +21,8 @@ class DriverViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
 
-    
-
-//        let locations = LocationManager.shared.getLocations()
-//        pickUpLocation = locations[0]
-//        dropOffLocation = locations[1]
-
-
-        lyftRideQuotes = LyftRideQuoteManager.shared.getRideQuotes(sourceLocation: pickUpLocation, dropOffLocation: dropOffLocation)
+        lyftRideQuotes = LyftRideQuoteManager.shared.getRideQuotes(pickUpLocation: pickUpLocation, dropOffLocation: dropOffLocation)
 
         let (driver, eta) =  DriverManager.shared.getETA(pickUpLocation: pickUpLocation)
         

@@ -1,6 +1,7 @@
 
 import Foundation
 import CoreLocation
+import MapKit
 
 class LyftRideQuoteManager {
     static let shared = LyftRideQuoteManager()
@@ -41,12 +42,12 @@ class LyftRideQuoteManager {
          
          
          */
-        func getRideQuotes(sourceLocation: Location!, dropOffLocation: Location!)-> [LyftRideQuote] {
+        func getRideQuotes(pickUpLocation: Location, dropOffLocation: Location)-> [LyftRideQuote] {
             
-            let pickUpLocation = CLLocation(latitude: sourceLocation.latitude, longitude: sourceLocation.longitude)
-            let endLocation = CLLocation(latitude: dropOffLocation.latitude, longitude: dropOffLocation.longitude)
+            let location1 = CLLocation(latitude: pickUpLocation.latitude, longitude: pickUpLocation.longitude)
+            let location2 = CLLocation(latitude: dropOffLocation.latitude, longitude: dropOffLocation.longitude)
             
-            let distance = pickUpLocation.distance(from: endLocation)
+            let distance = location1.distance(from: location2)
             
             let surcharge = 3.0
             

@@ -41,6 +41,36 @@ class DropOffLocationViewController: UIViewController {
     
 }
 
+extension DropOffLocationViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let latestString = (dropOffTextField.text! as NSString).replacingCharacters(in: range, with: string)
+        
+        if latestString.count > 3 {
+            searchCompleter?.queryFragment = latestString
+        }
+        return true
+}
+   
+
+
+
+}
+extension DropOffLocationViewController: MKLocalSearchCompleterDelegate {
+    func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
+        searchResults = completer.results
+        tableView.reloadData()
+    }
+
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationViewController = segue.destination as? RouteViewController, let dropOffLocation = sender as? Location {
+            if segue.identifier == "routeSegue" {
+                destinationViewController.pickUpLocation = pickUpLocation
+                destinationViewController.dropOffLocation = dropOffLocation
+            }
+        }
+    }
+}
+
 extension DropOffLocationViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //ternary operator expression for table view to show query search results in the table view (if any), OR to show the user's recent locations in the table view instead
@@ -62,7 +92,7 @@ extension DropOffLocationViewController: UITableViewDelegate, UITableViewDataSou
         return cell
     }
 
-    // ERIN YOU FORGOT THIS CODE
+   
 
 func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if searchResults.isEmpty{
@@ -86,30 +116,3 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 }
 }
 
-extension DropOffLocationViewController: UITextFieldDelegate {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let latestString = (dropOffTextField.text! as NSString).replacingCharacters(in: range, with: string)
-        
-        if latestString.count > 3 {
-            searchCompleter?.queryFragment = latestString
-        }
-        return true
-}
-   
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinationViewController = segue.destination as? RouteViewController, let dropOffLocation = sender as? Location {
-            if segue.identifier == "routeSegue" {
-                destinationViewController.pickUpLocation = pickUpLocation
-                destinationViewController.dropOffLocation = dropOffLocation
-            }
-        }
-    }
-
-}
-extension DropOffLocationViewController: MKLocalSearchCompleterDelegate {
-    func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
-        searchResults = completer.results
-        tableView.reloadData()
-    }
-}
