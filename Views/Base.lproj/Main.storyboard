@@ -287,14 +287,14 @@
             <objects>
                 <viewController id="qy3-cS-mCe" customClass="RouteViewController" customModule="LyftMapKitClone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qvN-BJ-xI7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SeW-LF-Yjp">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="503"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="449"/>
                             </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OdJ-ts-rg9">
-                                <rect key="frame" x="0.0" y="511" width="414" height="273"/>
+                                <rect key="frame" x="0.0" y="457" width="414" height="273"/>
                                 <color key="backgroundColor" name="BackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="273" id="L0f-Yb-fH2"/>
@@ -378,7 +378,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qv5-4o-1I8">
-                                <rect key="frame" x="51" y="808" width="312" height="46"/>
+                                <rect key="frame" x="51" y="754" width="312" height="46"/>
                                 <color key="backgroundColor" name="CitrusGreen"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="6ux-Fv-W1c"/>
@@ -392,18 +392,8 @@
                                     <segue destination="lhA-u6-bqO" kind="show" identifier="goToDriver" id="gfx-5G-WxW"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0cW-YE-lYA">
-                                <rect key="frame" x="20" y="450" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" name="Turquoise"/>
-                                <color key="tintColor" name="BackgroundColor"/>
-                                <state key="normal" image="arrow.uturn.left.circle" catalog="system"/>
-                                <connections>
-                                    <action selector="backButtonPressed:" destination="qy3-cS-mCe" eventType="touchUpInside" id="CYW-aV-SH8"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7ST-dT-pyL">
-                                <rect key="frame" x="33" y="129" width="348" height="49"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7ST-dT-pyL">
+                                <rect key="frame" x="33" y="41" width="348" height="58"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Barbed Wire Books" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miy-lD-AgT">
                                         <rect key="frame" x="199" y="14" width="100" height="20"/>
@@ -435,6 +425,16 @@
                                     <constraint firstItem="miy-lD-AgT" firstAttribute="centerY" secondItem="AO3-AC-Alu" secondAttribute="centerY" id="mqd-uo-6hF"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0cW-YE-lYA">
+                                <rect key="frame" x="33" y="406" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="Turquoise"/>
+                                <color key="tintColor" name="BackgroundColor"/>
+                                <state key="normal" image="arrow.uturn.left.circle" catalog="system"/>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="qy3-cS-mCe" eventType="touchUpInside" id="CYW-aV-SH8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="LMW-Nl-FqA"/>
                         <color key="backgroundColor" name="BackgroundColor"/>
@@ -459,24 +459,24 @@
                     <navigationItem key="navigationItem" id="qX9-cW-iHH"/>
                     <connections>
                         <outlet property="backButton" destination="0cW-YE-lYA" id="s3t-0A-vcV"/>
-                        <outlet property="destinationLocationLabel" destination="miy-lD-AgT" id="qyJ-q0-WBf"/>
+                        <outlet property="destinationLocationLabel" destination="miy-lD-AgT" id="tKi-2M-XsR"/>
                         <outlet property="mapView" destination="SeW-LF-Yjp" id="CX1-yd-WZY"/>
                         <outlet property="routeLabelContainer" destination="7ST-dT-pyL" id="N1U-Lc-iCd"/>
                         <outlet property="selectRideButton" destination="qv5-4o-1I8" id="pXl-fw-f5H"/>
-                        <outlet property="startLocationLabel" destination="jQz-Yx-a6m" id="bPJ-fd-uhH"/>
+                        <outlet property="startLocationLabel" destination="jQz-Yx-a6m" id="X5q-36-RCf"/>
                         <outlet property="tableView" destination="OdJ-ts-rg9" id="Qqz-Lb-jNW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pju-T0-dmI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="866.66666666666674" y="-1673.4375"/>
+            <point key="canvasLocation" x="1178" y="-1681"/>
         </scene>
         <!--Driver View Controller-->
         <scene sceneID="oZP-BD-hFO">
             <objects>
                 <viewController id="lhA-u6-bqO" customClass="DriverViewController" customModule="LyftMapKitClone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VIx-nj-n0G">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="sSA-vW-ztQ">
@@ -501,13 +501,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Edit Ride" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VlO-tu-IfR">
-                                <rect key="frame" x="33" y="860" width="51" height="15"/>
+                                <rect key="frame" x="33" y="806" width="51" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" name="LightAccent"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Safety Tools" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDg-Rm-Mrg">
-                                <rect key="frame" x="168" y="859" width="78" height="15"/>
+                                <rect key="frame" x="168" y="805" width="78" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="dDR-Z9-bzf"/>
                                 </constraints>
@@ -516,19 +516,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Contact" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rLR-rs-PeF">
-                                <rect key="frame" x="335" y="858" width="45" height="15"/>
+                                <rect key="frame" x="335" y="804" width="45" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" name="LightAccent"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alicia Castillo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s8w-pW-bTu">
-                                <rect key="frame" x="20" y="699" width="129" height="22.5"/>
+                                <rect key="frame" x="20" y="645" width="129" height="22.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                                 <color key="textColor" name="Turquoise"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hyundai Sonata" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KcF-XN-YsJ">
-                                <rect key="frame" x="20" y="727.5" width="108.5" height="28"/>
+                                <rect key="frame" x="20" y="673.5" width="108.5" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="kk2-Pb-IXz"/>
                                 </constraints>
@@ -537,24 +537,24 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Hyundai Sonata" translatesAutoresizingMaskIntoConstraints="NO" id="KCj-xD-pnE">
-                                <rect key="frame" x="245" y="685" width="90" height="110"/>
+                                <rect key="frame" x="245" y="631" width="90" height="110"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="110" id="DKa-ja-cCH"/>
                                     <constraint firstAttribute="width" constant="90" id="vgj-KU-dum"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rating-5.0" translatesAutoresizingMaskIntoConstraints="NO" id="8Kh-YM-OK1">
-                                <rect key="frame" x="20" y="764" width="100" height="20"/>
+                                <rect key="frame" x="20" y="710" width="100" height="20"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="driver" translatesAutoresizingMaskIntoConstraints="NO" id="hfX-Nz-Hnd">
-                                <rect key="frame" x="321" y="712.5" width="48" height="48"/>
+                                <rect key="frame" x="321" y="658.5" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="48" id="9co-6H-AaP"/>
                                     <constraint firstAttribute="height" constant="48" id="HId-vL-RIa"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Hb-nh-uVb" userLabel="Edit Icon">
-                                <rect key="frame" x="50" y="830" width="17" height="22"/>
+                                <rect key="frame" x="50" y="776" width="17" height="22"/>
                                 <color key="tintColor" name="Turquoise"/>
                                 <state key="normal" image="pencil" catalog="system"/>
                                 <connections>
@@ -562,35 +562,35 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="deV-tT-Oej" userLabel="Safety Tools">
-                                <rect key="frame" x="196.5" y="830" width="21" height="22"/>
+                                <rect key="frame" x="196.5" y="776" width="21" height="22"/>
                                 <color key="tintColor" name="Turquoise"/>
                                 <state key="normal" image="exclamationmark.shield" catalog="system"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IEI-3c-j8c" userLabel="Contact">
-                                <rect key="frame" x="346" y="830" width="22.5" height="22"/>
+                                <rect key="frame" x="346" y="776" width="22.5" height="22"/>
                                 <color key="tintColor" name="Turquoise"/>
                                 <state key="normal" image="phone.bubble.left" catalog="system"/>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pbl-7S-zHl">
-                                <rect key="frame" x="20" y="636" width="374" height="55"/>
+                                <rect key="frame" x="20" y="636" width="374" height="1"/>
                                 <color key="backgroundColor" name="LightAccent"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ENd-YN-NQz">
-                                <rect key="frame" x="20" y="809" width="374" height="1"/>
+                                <rect key="frame" x="20" y="755" width="374" height="1"/>
                                 <color key="backgroundColor" name="LightAccent"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Srm-GM-WWm"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7WSB312" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sFq-rv-O0s">
-                                <rect key="frame" x="283.5" y="762" width="66.5" height="18"/>
+                                <rect key="frame" x="283.5" y="708" width="66.5" height="18"/>
                                 <color key="backgroundColor" name="BackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1iI-6Q-r6b">
-                                <rect key="frame" x="128" y="765" width="24" height="21"/>
+                                <rect key="frame" x="128" y="711" width="24" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="kao-oa-vQ9"/>
                                 </constraints>
@@ -691,7 +691,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="pvd-kU-kIf"/>
+        <segue reference="h0G-fQ-OYY"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Hyundai Sonata" width="120" height="120"/>
