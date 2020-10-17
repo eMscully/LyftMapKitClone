@@ -17,7 +17,7 @@ class DriverManager {
         let locations = LocationManager.shared.getLocations()
         let randomLocation = locations[Int(arc4random_uniform(UInt32(locations.count)))]
         let coordinate = CLLocationCoordinate2D(latitude: randomLocation.latitude, longitude: randomLocation.longitude)
-        let driver = Driver(name: "Alicia Castillo", driverPic: K.Thumbnails.driver, licenseNumber: "7WSB312", rating: 5.0, carModel: K.Thumbnails.hyundai, coord: coordinate)
+        let driver = Driver(name: "Alicia Castillo", driverPic: K.Thumbnails.driver, licenseNumber: "7WSB312S", rating: 5.0, carModel: K.Thumbnails.hyundai, coord: coordinate)
        
         return (driver, 10)
         

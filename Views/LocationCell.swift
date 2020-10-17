@@ -10,7 +10,7 @@ class LocationCell: UITableViewCell {
     @IBOutlet weak var addressLabel: UILabel!
     
     //MARK: - Update table cell view with user's recent locations
-    func updateCell(with location: Location){
+    func updateCell(with location: Location!){
         titleLabel.text = location.title
         addressLabel.text = location.address
     }

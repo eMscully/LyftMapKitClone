@@ -25,10 +25,7 @@ struct K {
     struct Identifier {
         static let locationCell = "LocationCell"
         static let rideCell = "RideQuoteCell"
-        static let homeToLocationsSegue = "goToLocations"
-        static let homeToRouteSegue = "goToRouteView"
-        static let locationsToRoute = "routeSegue"
-        static let goToDriverSegue = "goToDriver"
+
     }
     
 

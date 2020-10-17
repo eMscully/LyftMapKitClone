@@ -1,5 +1,6 @@
 
 import Foundation
+import MapKit
 
 class Location: Codable {
 	var title: String
@@ -13,5 +14,15 @@ class Location: Codable {
 		self.latitude = latitude
 		self.longitude = longitude
 	}
+
+	
+init(placemark: MKPlacemark){
+	self.title = placemark.name ?? ""
+	self.address = placemark.title ?? ""
+	self.latitude = placemark.coordinate.latitude
+	self.longitude = placemark.coordinate.longitude
+
+	}
+	
 }
 

@@ -41,12 +41,12 @@ class LyftRideQuoteManager {
          
          
          */
-        func getRideQuotes(pickUpLocation: Location, dropOffLocation: Location)-> [LyftRideQuote] {
+        func getRideQuotes(sourceLocation: Location!, dropOffLocation: Location!)-> [LyftRideQuote] {
             
-            let locationStart = CLLocation(latitude: pickUpLocation.latitude, longitude: pickUpLocation.longitude)
-            let locationEnd = CLLocation(latitude: dropOffLocation.latitude, longitude: dropOffLocation.longitude)
+            let pickUpLocation = CLLocation(latitude: sourceLocation.latitude, longitude: sourceLocation.longitude)
+            let endLocation = CLLocation(latitude: dropOffLocation.latitude, longitude: dropOffLocation.longitude)
             
-            let distance = locationStart.distance(from: locationEnd)
+            let distance = pickUpLocation.distance(from: endLocation)
             
             let surcharge = 3.0
             

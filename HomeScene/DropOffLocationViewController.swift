@@ -13,8 +13,8 @@ class DropOffLocationViewController: UIViewController {
     private var searchCompleter: MKLocalSearchCompleter?
     var searchResults = [MKLocalSearchCompletion]()
     var locations = [Location]()
-    var pickUpLocation: Location?
-    var dropOffLocation: Location?
+    var pickUpLocation: Location!
+    var dropOffLocation: Location!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -35,6 +35,8 @@ class DropOffLocationViewController: UIViewController {
      
        
     }
+
+    //add code here for pop view controller when user presses cancel in the nav bar 
 
     
 }
@@ -59,7 +61,29 @@ extension DropOffLocationViewController: UITableViewDelegate, UITableViewDataSou
         
         return cell
     }
-    
+
+    // ERIN YOU FORGOT THIS CODE
+
+func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if searchResults.isEmpty{
+            let location = locations[indexPath.row]
+            performSegue(withIdentifier: "routeSegue", sender: location)
+        } else {
+            // Convert searchResult -> Location object
+            let searchResult = searchResults[indexPath.row]
+            let searchRequest = MKLocalSearch.Request(completion: searchResult)
+            let search = MKLocalSearch(request: searchRequest)
+            search.start(completionHandler: { (response, error) in
+                if error == nil{
+                    if let dropoffPlacemark = response?.mapItems.first?.placemark{
+                        let location = Location(placemark: dropoffPlacemark)
+                        self.performSegue(withIdentifier: "routeSegue", sender: location)
+                    }
+                }
+            })
+
+}
+}
 }
 
 extension DropOffLocationViewController: UITextFieldDelegate {
@@ -71,11 +95,13 @@ extension DropOffLocationViewController: UITextFieldDelegate {
         }
         return true
 }
+   
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinationViewController = segue.destination as? RouteViewController {
-            if segue.identifier == K.Identifier.locationsToRoute {
-                pickUpLocation = destinationViewController.startLocation
-                dropOffLocation = destinationViewController.destination
+        if let destinationViewController = segue.destination as? RouteViewController, let dropOffLocation = sender as? Location {
+            if segue.identifier == "routeSegue" {
+                destinationViewController.pickUpLocation = pickUpLocation
+                destinationViewController.dropOffLocation = dropOffLocation
             }
         }
     }

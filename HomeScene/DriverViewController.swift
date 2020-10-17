@@ -3,8 +3,8 @@ import UIKit
 import MapKit
 
 class DriverViewController: UIViewController {
-    
-    var pickupLocation: Location!
+    var lyftRideQuotes = [LyftRideQuote]()
+    var pickUpLocation: Location!
     var dropOffLocation: Location!
     
     @IBOutlet weak var backButton: UIButton!
@@ -20,11 +20,18 @@ class DriverViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let locations = LocationManager.shared.getLocations()
-        pickupLocation = locations[0]
-        dropOffLocation = locations[1]
-        let (driver, eta) =  DriverManager.shared.getETA(pickUpLocation: pickupLocation)
+      
+
+    
+
+//        let locations = LocationManager.shared.getLocations()
+//        pickUpLocation = locations[0]
+//        dropOffLocation = locations[1]
+
+
+        lyftRideQuotes = LyftRideQuoteManager.shared.getRideQuotes(sourceLocation: pickUpLocation, dropOffLocation: dropOffLocation)
+
+        let (driver, eta) =  DriverManager.shared.getETA(pickUpLocation: pickUpLocation)
         
         
         //MARK: - Customize UI elements
@@ -48,15 +55,15 @@ class DriverViewController: UIViewController {
         licenseLabel.text = driver.licenseNumber
         
         
-        let pickupCoordinate = CLLocationCoordinate2D(latitude: pickupLocation.latitude, longitude: pickupLocation.longitude)
+        let pickupCoordinate = CLLocationCoordinate2D(latitude: pickUpLocation.latitude, longitude: pickUpLocation.longitude)
         let dropOffCoordinate = CLLocationCoordinate2D(latitude: dropOffLocation.latitude, longitude: dropOffLocation.longitude)
         
         let driverAnnotation = CarAnnotation(coordinate: driver.coordinate)
-        let pickupAnnotation = RouteAnnotation(coord: pickupCoordinate, locationType: "pickup")
+        let pickUpAnnotation = RouteAnnotation(coord: pickupCoordinate, locationType: "pickUp")
         let dropOffAnnotation = RouteAnnotation(coord: dropOffCoordinate, locationType: "dropOff")
         
         //Create a reusable constant for the multiple annotations; explicitly declare the map annotation type because Swift will infer that the map annotations array is an array of NSObjects. The .addAnnotations and .showAnnotations delegate methods require an array of MKAnnotations, NOT NSObjects
-        let mapAnnotations: [MKAnnotation] = [driverAnnotation, pickupAnnotation, dropOffAnnotation]
+        let mapAnnotations: [MKAnnotation] = [driverAnnotation, pickUpAnnotation, dropOffAnnotation]
         mapView.addAnnotations(mapAnnotations)
         mapView.showAnnotations(mapAnnotations, animated: false)
        
@@ -64,7 +71,7 @@ class DriverViewController: UIViewController {
         let driverLocation = Location(title: driver.name, address: driver.licenseNumber, latitude: driver.coordinate.latitude, longitude: driver.coordinate.longitude)
        
 //Route starting coordinate is the driver's current location and the route end point is where the user currently is to be picked up
-        displayRoute(start: driverLocation, end: pickupLocation)
+        displayRoute(start: driverLocation, end: pickUpLocation)
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
@@ -99,14 +106,14 @@ extension DriverViewController: MKMapViewDelegate {
             annotationView?.image = UIImage(named: K.Thumbnails.carAnnotation)
         }
         else if let routeAnnotation = annotation as? RouteAnnotation {
-            annotationView!.image = UIImage(named: "\(routeAnnotation.locationType)")
+            annotationView?.image = UIImage(named: "\(routeAnnotation.locationType)")
         }
         
         return annotationView
     }
 //MARK: - Set up Route view
         
-func displayRoute(start: Location, end: Location){
+func displayRoute(start: Location!, end: Location!){
     
         let startCoordinate = CLLocationCoordinate2D(latitude: start.latitude, longitude: start.longitude)
         let endCoordinate = CLLocationCoordinate2D(latitude: end.latitude, longitude: end.longitude)
@@ -125,9 +132,7 @@ func displayRoute(start: Location, end: Location){
                     print("Error calculating route directions: \(error)")
                     return
                 }
-                guard let response = response else {
-                    return
-                }
+                if let response = response {
     
                 let route = response.routes.first!
                 self.mapView.addOverlay(route.polyline, level: .aboveRoads)
@@ -143,6 +148,4 @@ func displayRoute(start: Location, end: Location){
         }
     
 }
-
-
-
+}

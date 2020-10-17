@@ -17,8 +17,8 @@ class RouteViewController: UIViewController {
 //MARK: - Class properties:
     
     var lyftRideQuotes = [LyftRideQuote]()
-    var startLocation: Location!
-    var destination: Location!
+    var pickUpLocation: Location!
+    var dropOffLocation: Location!
         
     //this property is used to keep track of what cell the user selects because the selected cell's appearance will change
     var selectedIndex = 1
@@ -43,28 +43,28 @@ class RouteViewController: UIViewController {
         
         
         
-        //Temporarily populating properties for data seeding:
-//        let locations = LocationManager.shared.getLocations()
-//        startLocation = locations[0]
-//        destination = locations[1]
+      //  Temporarily populating properties for data seeding:
+                         let locations = LocationManager.shared.getLocations()
+        pickUpLocation = locations[0]
+        dropOffLocation = locations[1]
 
 
         
-        startLocationLabel.text = startLocation.title
-        destinationLocationLabel.text = destination.title
+      //  startLocationLabel.text = pickUpLocation.title
+   //     destinationLocationLabel.text = dropOffLocation.title
         
         
-        lyftRideQuotes = LyftRideQuoteManager.shared.getRideQuotes(pickUpLocation: startLocation, dropOffLocation: destination)
+        lyftRideQuotes = LyftRideQuoteManager.shared.getRideQuotes(sourceLocation: pickUpLocation, dropOffLocation: dropOffLocation)
           
  //MARK: - Create route start and end point annotations
-        let pickUpCoord = CLLocationCoordinate2D(latitude: startLocation!.latitude, longitude: startLocation!.longitude)
-        let dropOffCoord = CLLocationCoordinate2D(latitude: destination!.latitude, longitude: destination!.longitude)
+        let pickUpCoord = CLLocationCoordinate2D(latitude: pickUpLocation!.latitude, longitude: pickUpLocation!.longitude)
+        let dropOffCoord = CLLocationCoordinate2D(latitude: dropOffLocation!.latitude, longitude: dropOffLocation!.longitude)
         
         let pickUpAnnotation = RouteAnnotation(coord: pickUpCoord, locationType: "pickUp")
         let dropOffAnnotation = RouteAnnotation(coord: dropOffCoord, locationType: "dropOff")
         mapView.addAnnotations([pickUpAnnotation, dropOffAnnotation])
 
-    displayRoute(start: startLocation, end: destination)
+    displayRoute(start: pickUpLocation, end: dropOffLocation)
     }
     
     
@@ -74,15 +74,16 @@ class RouteViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let goToDriverVC = segue.destination as? DriverViewController {
-            if segue.identifier == K.Identifier.goToDriverSegue {
-                goToDriverVC.pickupLocation = startLocation
-                goToDriverVC.dropOffLocation = destination
+            if segue.identifier == "goToDriver" {
+                goToDriverVC.pickUpLocation = pickUpLocation
+                goToDriverVC.dropOffLocation = dropOffLocation
             }
         }
     }
     
+    // teacher doesn't have a perform segue call here like you do......
     @IBAction func selectRidePressed(_ sender: UIButton) {
-        performSegue(withIdentifier: K.Identifier.goToDriverSegue, sender: self)
+      //  performSegue(withIdentifier: K.Identifier.goToDriverSegue, sender: self)
     }
     
 
@@ -131,7 +132,7 @@ func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnota
     }
     
     
-func displayRoute(start: Location, end: Location){
+func displayRoute(start: Location!, end: Location!){
     
     let startCoordinate = CLLocationCoordinate2D(latitude: start.latitude, longitude: start.longitude)
     let endCoordinate = CLLocationCoordinate2D(latitude: end.latitude, longitude: end.longitude)
@@ -153,7 +154,7 @@ func displayRoute(start: Location, end: Location){
             guard let response = response else {
                 return
             }
-         
+         //teacher has let route = response.routes[0]    ...... dbl check this
             let route = response.routes.first!
             self.mapView.addOverlay(route.polyline, level: .aboveRoads)
             self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, edgePadding: UIEdgeInsets(top: 80.0, left: 80.0, bottom: 80.0, right: 80.0), animated: true)

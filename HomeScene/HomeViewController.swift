@@ -5,38 +5,39 @@ import CoreLocation
 
 class HomeViewController: UIViewController {
 
-
     @IBOutlet weak var tableView: UITableView!
-    
+
     @IBOutlet weak var mapView: MKMapView!
     
     @IBOutlet weak var searchButton: UIButton!
     
-
-    private var locationManager: CLLocationManager?
+    
+    var locationManager: CLLocationManager?
     var locations = [Location]()
     var currentUserLocation: Location?
-  
-override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(true)
-    navigationController?.isNavigationBarHidden = true
+    
+    var locationAdded = false
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        navigationController?.isNavigationBarHidden = true
     }
-
-override func viewDidLoad() {
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
-//MARK: - Core Location Manager Configuration and Delegation:
+        //MARK: - Core Location Manager Configuration and Delegation:
         
         locationManager = CLLocationManager()
         locationManager?.requestAlwaysAuthorization()
         locationManager?.startUpdatingLocation()
         locations = LocationManager.shared.getLocations()
-
-//MARK: - Delegatation continued:
+        
+        //MARK: - Delegatation continued:
         tableView.dataSource = self
         tableView.delegate = self
         mapView.delegate = self
-   
-//MARK: - Search button CALayer alterations
+        
+        //MARK: - Search button CALayer alterations
         searchButton
             .layer
             .cornerRadius = 10.0
@@ -53,24 +54,24 @@ override func viewDidLoad() {
     //MARK: - Passing user's current location information to the drop off view controller screen
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let nextViewController = segue.destination as? DropOffLocationViewController {
-            if segue.identifier == K.Identifier.homeToLocationsSegue {
-                nextViewController.pickUpLocation = currentUserLocation
+        if let dropOffViewController = segue.destination as? DropOffLocationViewController {
+            if segue.identifier == "goToLocations" {
+                dropOffViewController.pickUpLocation = currentUserLocation
             }
         }
-     else if let routeDestinationViewController = segue.destination as? RouteViewController, let dropoffLocation = sender as? Location {
-        if segue.identifier == K.Identifier.homeToRouteSegue {
-                routeDestinationViewController.startLocation = currentUserLocation
-                routeDestinationViewController.destination = dropoffLocation
+        else if let routeDestinationViewController = segue.destination as? RouteViewController, let dropOffLocation = sender as? Location {
+            if segue.identifier == "goToRouteView" {
+                routeDestinationViewController.pickUpLocation = currentUserLocation
+                routeDestinationViewController.dropOffLocation = dropOffLocation
             }
         }
-   }
+    }
     
     
-        
+    // REVIEW THIS ERIN: i don't think you need it........
     @IBAction func searchPressed(_ sender: UIButton) {
-    performSegue(withIdentifier: K.Identifier.homeToLocationsSegue, sender: self)
-}
+        //  performSegue(withIdentifier: K.Identifier.homeToLocationsSegue, sender: self)
+    }
 }
 
 //MARK: - Core Location Manager Delegate Methods:
@@ -93,7 +94,7 @@ extension HomeViewController: CLLocationManagerDelegate {
             locationManager?.allowsBackgroundLocationUpdates = true
             locationManager?.pausesLocationUpdatesAutomatically = false
             locationManager?.desiredAccuracy = kCLLocationAccuracyBest
-       
+            
         case .notDetermined:
             locationManager?.stopUpdatingLocation()
             print("Authorization undetermined")
@@ -115,30 +116,24 @@ extension HomeViewController: CLLocationManagerDelegate {
                 }
             }
             locationManager?.startUpdatingLocation()
-                
+            
         }
         
-
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        
-        if locations.first != nil {
-            let location = locations.first!
-              currentUserLocation = Location(title: "Current Location", address: "", latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        }
-    
+        let location = locations.first!
+        currentUserLocation = Location(title: "Current Location", address: "", latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
     }
     
-//MARK: - "Graceful fail" CLLocationManager delegate method
+    //MARK: - "Graceful fail" CLLocationManager delegate method
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error retrieving user's location: \(error.localizedDescription)")
         if let error = error as? CLError, error.code == .denied {
             locationManager?.stopMonitoringSignificantLocationChanges()
             return
         }
-        
     }
     
 }
@@ -158,43 +153,63 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let dropOffLocation = locations[indexPath.row]
-        performSegue(withIdentifier: K.Identifier.homeToRouteSegue, sender: dropOffLocation)
+        performSegue(withIdentifier: "goToRouteView", sender: dropOffLocation)
         
     }
     
 }
 //MARK: - Map View Delegate Methods
 extension HomeViewController: MKMapViewDelegate {
-   
+    
+    //teacher created a 'locationAdded' variable here and set it to false ....
+    
+    
+    
+    
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-        //Zoom in on region
-        let distance = 200.0
-        
-        let region = MKCoordinateRegion(center: userLocation.coordinate, latitudinalMeters: distance, longitudinalMeters: distance)
-        
-        mapView.setRegion(region, animated: true)
         
         
-        let latitude = userLocation.coordinate.latitude
-        let longitude = userLocation.coordinate.longitude
         
-        let annotationViewOffset = 0.00075
-        let c1 = CLLocationCoordinate2D(latitude: latitude - annotationViewOffset, longitude: longitude - annotationViewOffset)
-        let c2 = CLLocationCoordinate2D(latitude: latitude, longitude: longitude + annotationViewOffset)
-        let c3 = CLLocationCoordinate2D(latitude: latitude, longitude: longitude - annotationViewOffset)
+        /*teacher code:
+         if !locationAdded { all of my code  is the same but after the closing curly brace he then set locationAdded equal to true???}
+         
+         */
         
-        mapView.addAnnotations([CarAnnotation(coordinate: c1), CarAnnotation(coordinate: c2), CarAnnotation(coordinate: c3)])
-        
+        if !locationAdded {
+            let distance = 200.0
+            
+            let region = MKCoordinateRegion(center: userLocation.coordinate, latitudinalMeters: distance, longitudinalMeters: distance)
+            
+            mapView.setRegion(region, animated: true)
+            
+            
+            let latitude = userLocation.coordinate.latitude
+            let longitude = userLocation.coordinate.longitude
+            
+            let annotationViewOffset = 0.00075
+            let c1 = CLLocationCoordinate2D(latitude: latitude - annotationViewOffset, longitude: longitude - annotationViewOffset)
+            let c2 = CLLocationCoordinate2D(latitude: latitude, longitude: longitude + annotationViewOffset)
+            let c3 = CLLocationCoordinate2D(latitude: latitude, longitude: longitude - annotationViewOffset)
+            
+            mapView.addAnnotations([CarAnnotation(coordinate: c1), CarAnnotation(coordinate: c2), CarAnnotation(coordinate: c3)])
+            
+            
+        }
+        //teacher then set it to true..
+        locationAdded = true
         
     }
+    
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation {
             return nil  }
-       
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "CarAnnotation")
+        
+        let reuseIdentifier = "CarAnnotation"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier)
         
         if annotationView == nil {
-            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "CarAnnotation")
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
             
         } else {
             annotationView?.annotation = annotation
@@ -204,7 +219,7 @@ extension HomeViewController: MKMapViewDelegate {
         annotationView?.transform = CGAffineTransform(rotationAngle: CGFloat(arc4random_uniform(360) * 180) / CGFloat.pi)
         return annotationView
     }
-
+    
     
     
 }
